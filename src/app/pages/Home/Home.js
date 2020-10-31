@@ -1,118 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import image from "../../../assets/images/my_photo.jpg";
-import Button from "../../components/Button";
-import Photo from "../../components/Photo";
-import Title from "../../components/Title";
-import { motion } from "framer-motion";
-import { v4 as uuidv4 } from "uuid";
+import { variants_title, variants_photo } from "../../utils/motion";
 import Menu from "../../components/Menu";
-
-const variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { ease: [0.7, 0.2, 0.5, 0.7], duration: 0.6 },
-  },
-  hidden: {
-    opacity: 0,
-    y: 80,
-    transition: { ease: [0.7, 0.2, 0.5, 0.7], duration: 0.6 },
-  },
-};
-const variants_photo = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    skewY: 0,
-    scale: 1,
-    transition: { ease: [0.7, 0.2, 0.5, 0.7], duration: 0.6 },
-  },
-  hidden: { opacity: 0, y: 200, skewY: 15, scale: 0.9 },
-};
-
-const Styled_Bck = styled.div`
-  width: 100%;
-  background: ${(props) => props.theme.colors.bck};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 3vw;
-`;
-const Styled_Section = styled.section`
-  max-width: 1366px;
-  background: ${(props) => props.theme.colors.bck};
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr auto 5vh;
-  height: calc(100vh - 90px);
-
-  @media screen and (orientation: landscape) {
-    height: 100vh;
-  }
-  @media screen and (min-width: 800px) and (orientation: landscape) {
-    height: calc(100vh - 90px);
-  }
-  @media screen and (min-width: 1024px) and (orientation: landscape) {
-    height: calc(100vh - 130px);
-  }
-`;
-const Styled_Title = styled(Title)`
-  grid-area: 1/1/2/13;
-  margin-top: 0.5em;
-`;
-const Styled_SubTitle_Box = styled(motion.div)`
-  grid-area: 1/1/2/13;
-  justify-self: end;
-  align-self: end;
-  margin-bottom: 0.1em;
-  overflow: hidden;
-`;
-const Styled_SubTitle = styled(motion.h2)`
-  font-weight: 400;
-  font-size: ${(props) => props.theme.size.m};
-  color: ${(props) => props.theme.colors.dark};
-  line-height: 100%;
-  text-transform: uppercase;
-
-  @media screen and (min-width: 414px) and (orientation: portrait) {
-    font-size: ${(props) => props.theme.size.l};
-  }
-  @media screen and (min-width: 1024px) and (orientation: landscape) {
-    font-size: ${(props) => props.theme.size.xl};
-  }
-`;
-const Styled_Photo_Box = styled(motion.div)`
-  grid-area: 2/1/4/13;
-  align-self: end;
-  height: 50vh;
-  overflow: hidden;
-
-  @media screen and (min-width: 375px) and (orientation: portrait) {
-    height: 60vh;
-  }
-  @media screen and (orientation: landscape) {
-    height: 50vh;
-  }
-  @media screen and (min-width: 800px) and (orientation: landscape) {
-    height: 30vh;
-  }
-  @media screen and (min-width: 1440px) and (orientation: landscape) {
-    height: 25vh;
-  }
-  @media screen and (min-width: 1920px) and (orientation: landscape) {
-    height: 30vh;
-  }
-`;
-const Styled_Photo = styled(motion.img)`
-  width: 100%;
-`;
-const Styled_Button = styled(Button)`
-  grid-area: 2/2/3/13;
-  align-self: end;
-  justify-self: start;
-`;
+import {
+  Styled_Bck,
+  Styled_Section,
+  Styled_Title,
+  Styled_SubTitle_Box,
+  Styled_SubTitle,
+  Styled_Photo_Box,
+  Styled_Photo,
+  Styled_Button,
+} from "./Home.css";
 
 const Home = () => {
   return (
@@ -124,11 +23,10 @@ const Home = () => {
         <Styled_SubTitle_Box>
           <Styled_SubTitle
             children="ui/ux designer"
-            variants={variants}
+            variants={variants_title}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            key="subtitle"
           />
         </Styled_SubTitle_Box>
 
@@ -140,6 +38,7 @@ const Home = () => {
               variants={variants_photo}
               animate="visible"
               initial="hidden"
+              exit="hidden"
             />
           }
         />
