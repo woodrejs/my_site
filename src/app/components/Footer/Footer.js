@@ -5,6 +5,8 @@ import Button from "../Button";
 import Line from "../Line";
 
 const Styled_Footer = styled.footer`
+  max-width: 1366px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 2fr 3fr;
@@ -33,7 +35,7 @@ const Styled_Social = styled(Social)`
   align-self: end;
 `;
 
-const Footer = ({ click, isDark, className }) => {
+const Footer = ({ isDark, className }) => {
   return (
     <Styled_Footer className={className}>
       <Styled_Line isDark={isDark} />
@@ -44,7 +46,6 @@ const Footer = ({ click, isDark, className }) => {
           to="/portfolio"
           isDark={isDark}
           isSmall={false}
-          click={click}
         />
 
         <Styled_Button
@@ -52,7 +53,6 @@ const Footer = ({ click, isDark, className }) => {
           to="/contact"
           isDark={isDark}
           isSmall={false}
-          click={click}
         />
       </Styled_Button_Box>
 

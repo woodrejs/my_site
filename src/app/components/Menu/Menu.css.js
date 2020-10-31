@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import Line from "../Line";
 
 export const Styled_nav = styled.nav`
+  max-width: 1366px;
   width: 100%;
-  height: 100%;
+  height: 90px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 
@@ -13,6 +14,13 @@ export const Styled_nav = styled.nav`
     props.isBckDark
       ? (props) => props.theme.colors.dark
       : (props) => props.theme.colors.bck};
+
+  @media screen and (min-width: 600px) and (orientation: portrait) {
+    height: 130px;
+  }
+  @media screen and (min-width: 1024px) and (orientation: landscape) {
+    height: 130px;
+  }
 `;
 export const Styled_Menu = styled.div`
   display: none;

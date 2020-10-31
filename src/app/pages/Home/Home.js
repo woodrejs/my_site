@@ -5,6 +5,8 @@ import Button from "../../components/Button";
 import Photo from "../../components/Photo";
 import Title from "../../components/Title";
 import { motion } from "framer-motion";
+import { v4 as uuidv4 } from "uuid";
+import Menu from "../../components/Menu";
 
 const variants = {
   visible: {
@@ -12,7 +14,11 @@ const variants = {
     y: 0,
     transition: { ease: [0.7, 0.2, 0.5, 0.7], duration: 0.6 },
   },
-  hidden: { opacity: 0, y: 80 },
+  hidden: {
+    opacity: 0,
+    y: 80,
+    transition: { ease: [0.7, 0.2, 0.5, 0.7], duration: 0.6 },
+  },
 };
 const variants_photo = {
   visible: {
@@ -25,7 +31,18 @@ const variants_photo = {
   hidden: { opacity: 0, y: 200, skewY: 15, scale: 0.9 },
 };
 
+const Styled_Bck = styled.div`
+  width: 100%;
+  background: ${(props) => props.theme.colors.bck};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 3vw;
+`;
 const Styled_Section = styled.section`
+  max-width: 1366px;
+  background: ${(props) => props.theme.colors.bck};
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 2fr auto 5vh;
@@ -97,36 +114,39 @@ const Styled_Button = styled(Button)`
   justify-self: start;
 `;
 
-const Home = ({ prevPath, click }) => {
+const Home = () => {
   return (
-    <Styled_Section>
-      <Styled_Title size="l" title="frontend developer" />
+    <Styled_Bck>
+      <Menu />
+      <Styled_Section>
+        <Styled_Title size="l" title="frontend developer" />
 
-      <Styled_SubTitle_Box
-        children={
+        <Styled_SubTitle_Box>
           <Styled_SubTitle
             children="ui/ux designer"
             variants={variants}
             initial="hidden"
             animate="visible"
+            exit="hidden"
+            key="subtitle"
           />
-        }
-      />
+        </Styled_SubTitle_Box>
 
-      <Styled_Photo_Box
-        children={
-          <Styled_Photo
-            src={image}
-            alt="my_photo"
-            variants={variants_photo}
-            animate="visible"
-            initial="hidden"
-          />
-        }
-      />
+        <Styled_Photo_Box
+          children={
+            <Styled_Photo
+              src={image}
+              alt="my_photo"
+              variants={variants_photo}
+              animate="visible"
+              initial="hidden"
+            />
+          }
+        />
 
-      <Styled_Button title="o mnie" to="/about" isDark={false} click={click} />
-    </Styled_Section>
+        <Styled_Button title="o mnie" to="/about" isDark={false} />
+      </Styled_Section>
+    </Styled_Bck>
   );
 };
 

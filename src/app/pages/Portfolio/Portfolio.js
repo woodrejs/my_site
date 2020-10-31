@@ -5,6 +5,7 @@ import image from "../../../assets/images/photo.jpg";
 import Title from "../../components/Title";
 import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
+import Menu from "../../components/Menu";
 
 const variants = {
   visible: {
@@ -15,7 +16,17 @@ const variants = {
   hidden: { opacity: 0, y: 80 },
 };
 
+const Styled_Bck = styled.div`
+  width: 100%;
+  background: ${(props) => props.theme.colors.bck};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 3vw;
+`;
 const Styled_Section = styled.section`
+  max-width: 1366px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 40vh auto auto;
@@ -69,41 +80,43 @@ const Styled_Footer = styled(Footer)`
   grid-area: 3/1/4/13;
 `;
 
-const Portfolio = ({ prevPath, click }) => {
+const Portfolio = () => {
   return (
-    <Styled_Section>
-      <Styled_Title title="projekty" size="l" />
+    <Styled_Bck>
+      <Menu />
+      <Styled_Section>
+        <Styled_Title title="projekty" size="l" />
 
-      <Styled_SubTitle_Box
-        children={
-          <Styled_SubTitle
-            children="informacje"
-            variants={variants}
-            animate="visible"
-            initial="hidden"
+        <Styled_SubTitle_Box
+          children={
+            <Styled_SubTitle
+              children="informacje"
+              variants={variants}
+              animate="visible"
+              initial="hidden"
+            />
+          }
+        />
+
+        <Styled_Projects_Box>
+          <ProjectSection
+            img={image}
+            type="ui/ux"
+            date="25/10/2020"
+            title="dekorator wnętrz"
+            number="01"
           />
-        }
-      />
-
-      <Styled_Projects_Box>
-        <ProjectSection
-          img={image}
-          type="ui/ux"
-          date="25/10/2020"
-          title="dekorator wnętrz"
-          number="01"
-        />
-        <ProjectSection
-          img={image}
-          type="ui/ux"
-          date="25/10/2020"
-          title="dekorator wnętrz"
-          number="01"
-        />
-      </Styled_Projects_Box>
-
+          <ProjectSection
+            img={image}
+            type="ui/ux"
+            date="25/10/2020"
+            title="dekorator wnętrz"
+            number="01"
+          />
+        </Styled_Projects_Box>
+      </Styled_Section>
       <Styled_Footer />
-    </Styled_Section>
+    </Styled_Bck>
   );
 };
 

@@ -32,7 +32,6 @@ const Line = ({ isDark, className }) => {
           variants={variants}
           animate={inView ? "visible" : "hidden"}
           initial="hidden"
-          exit="hidden"
         />
       )}
     </InView>

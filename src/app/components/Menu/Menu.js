@@ -45,7 +45,7 @@ const variants_arrow = {
   hidden: { scaleX: 0 },
 };
 
-const Menu = ({ click }) => {
+const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleHamburger = () => setIsOpen(!isOpen);
   const pathname = useLocation().pathname;
@@ -53,7 +53,7 @@ const Menu = ({ click }) => {
 
   return (
     <Styled_nav isBckDark={isBckDark}>
-      <Styled_Logo to="/" onClick={() => click(pathname)}>
+      <Styled_Logo to="/">
         <Styled_Box variants={variants} initial="hidden" animate="visible">
           {isBckDark ? <CopywriterLight /> : <CopywriterDark />}
           <Styled_BrandName
@@ -72,7 +72,7 @@ const Menu = ({ click }) => {
             initial="hidden"
             animate="visible"
           >
-            <Link to={path} children={name} onClick={() => click(pathname)} />
+            <Link to={path} children={name} />
             <hr />
           </Styled_MenuItem>
         ))}
@@ -92,7 +92,6 @@ const Menu = ({ click }) => {
               to={path}
               children={name}
               isBckDark={isBckDark}
-              onClick={() => click(pathname)}
             />
           ))}
         />

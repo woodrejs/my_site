@@ -4,8 +4,23 @@ import Button from "../../components/Button";
 import Photo from "../../components/Photo";
 import Title from "../../components/Title";
 import Footer from "../../components/Footer";
+import Menu from "../../components/Menu";
+//tmp
+import deskopImg from "../../../assets/images/frame.jpg";
+import mobileImg from "../../../assets/images/mobile.jpg";
+//
 
+const Styled_Bck = styled.div`
+  width: 100%;
+  background: ${(props) => props.theme.colors.dark};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 3vw;
+`;
 const Styled_Section = styled.section`
+  max-width: 1366px;
   background: ${(props) => props.theme.colors.dark};
 `;
 const Styled_Article = styled.article`
@@ -45,24 +60,25 @@ const Styled_Footer = styled(Footer)`
   }
 `;
 
-const Project = ({ title, mobileImg, deskopImg, prevPath, click }) => {
+const Project = () => {
   return (
-    <Styled_Section>
-      <Styled_Article>
-        <Styled_Title title={title} size="l" isDark={false} />
-        <Styled_Button
-          title="powrót"
-          to="/portfolio"
-          isDark={false}
-          invertArrow={true}
-          click={click}
-        />
-        <Styled_MobileLayoutPhoto src={mobileImg} alt="Mobile_Layout_Photo" />
-        <Styled_DeskopLayoutPhoto src={deskopImg} alt="Deskop_Layout_Photo" />
-      </Styled_Article>
-
-      <Styled_Footer click={click} isDark={false} />
-    </Styled_Section>
+    <Styled_Bck>
+      <Menu />
+      <Styled_Section>
+        <Styled_Article>
+          <Styled_Title title={"title"} size="l" isDark={false} />
+          <Styled_Button
+            title="powrót"
+            to="/portfolio"
+            isDark={false}
+            invertArrow={true}
+          />
+          <Styled_MobileLayoutPhoto src={mobileImg} alt="Mobile_Layout_Photo" />
+          <Styled_DeskopLayoutPhoto src={deskopImg} alt="Deskop_Layout_Photo" />
+        </Styled_Article>
+      </Styled_Section>
+      <Styled_Footer isDark={false} />
+    </Styled_Bck>
   );
 };
 

@@ -7,6 +7,7 @@ import Title from "../../components/Title";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
 import { v4 as uuidv4 } from "uuid";
+import Menu from "../../components/Menu";
 
 const data = {
   paragraph_A: {
@@ -42,7 +43,17 @@ const variants_text = {
   },
 };
 
+const Styled_Bck = styled.div`
+  width: 100%;
+  background: ${(props) => props.theme.colors.dark};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 3vw;
+`;
 const Styled_Section = styled.section`
+  max-width: 1366px;
   @media screen and (orientation: landscape) {
     padding-top: 3em;
   }
@@ -137,67 +148,73 @@ const Styled_Text = styled(motion.p)`
   }
 `;
 
-const About = ({ prevPath, click }) => {
+const About = () => {
   return (
-    <Styled_Section>
-      <Styled_Article>
-        <Styled_Photo src={image} alt="my_photo" />
-        <Styled_Title title="o mnie" size="l" isDark={false} />
+    <Styled_Bck>
+      <Menu />
+      <Styled_Section>
+        <Styled_Article>
+          <Styled_Photo src={image} alt="my_photo" />
+          <Styled_Title title="o mnie" size="l" isDark={false} />
 
-        <Styled_Text_Box>
-          <Styled_SubTitle title="frontend developer" size="m" isDark={false} />
+          <Styled_Text_Box>
+            <Styled_SubTitle
+              title="frontend developer"
+              size="m"
+              isDark={false}
+            />
 
-          <Styled_SubTitleOutline
-            title="ui/ux designer"
-            size="m"
-            isDark={false}
-          />
+            <Styled_SubTitleOutline
+              title="ui/ux designer"
+              size="m"
+              isDark={false}
+            />
 
-          <InView triggerOnce={true} threshold={0.2}>
-            {({ inView, ref }) => (
-              <Styled_Text
-                ref={ref}
-                key={data.paragraph_A.id}
-                children={data.paragraph_A.text}
-                variants={variants_text}
-                animate={inView ? "visible" : "hidden"}
-                initial="hidden"
-              />
-            )}
-          </InView>
+            <InView triggerOnce={true} threshold={0.2}>
+              {({ inView, ref }) => (
+                <Styled_Text
+                  ref={ref}
+                  key={data.paragraph_A.id}
+                  children={data.paragraph_A.text}
+                  variants={variants_text}
+                  animate={inView ? "visible" : "hidden"}
+                  initial="hidden"
+                />
+              )}
+            </InView>
 
-          <InView triggerOnce={true} threshold={0.2}>
-            {({ inView, ref }) => (
-              <Styled_Text
-                ref={ref}
-                key={data.paragraph_B.id}
-                children={data.paragraph_B.text}
-                variants={variants_text}
-                animate={inView ? "visible" : "hidden"}
-                initial="hidden"
-              />
-            )}
-          </InView>
+            <InView triggerOnce={true} threshold={0.2}>
+              {({ inView, ref }) => (
+                <Styled_Text
+                  ref={ref}
+                  key={data.paragraph_B.id}
+                  children={data.paragraph_B.text}
+                  variants={variants_text}
+                  animate={inView ? "visible" : "hidden"}
+                  initial="hidden"
+                />
+              )}
+            </InView>
 
-          <Styled_ThirdTitle title="oferta" size="s" isDark={false} />
+            <Styled_ThirdTitle title="oferta" size="s" isDark={false} />
 
-          <InView triggerOnce={true} threshold={0.2}>
-            {({ inView, ref }) => (
-              <Styled_Text
-                ref={ref}
-                key={data.paragraph_C.id}
-                children={data.paragraph_C.text}
-                variants={variants_text}
-                animate={inView ? "visible" : "hidden"}
-                initial="hidden"
-              />
-            )}
-          </InView>
-        </Styled_Text_Box>
-      </Styled_Article>
-
-      <Footer isDark={false} click={click} />
-    </Styled_Section>
+            <InView triggerOnce={true} threshold={0.2}>
+              {({ inView, ref }) => (
+                <Styled_Text
+                  ref={ref}
+                  key={data.paragraph_C.id}
+                  children={data.paragraph_C.text}
+                  variants={variants_text}
+                  animate={inView ? "visible" : "hidden"}
+                  initial="hidden"
+                />
+              )}
+            </InView>
+          </Styled_Text_Box>
+        </Styled_Article>
+      </Styled_Section>
+      <Footer isDark={false} />
+    </Styled_Bck>
   );
 };
 export default About;

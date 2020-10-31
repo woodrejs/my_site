@@ -74,21 +74,14 @@ const Button = ({
   to,
   invertArrow = false,
   className,
-  click,
 }) => {
-  const pathname = useLocation().pathname;
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
   });
 
   return (
-    <Styled_Button
-      ref={ref}
-      to={to}
-      className={className}
-      onClick={() => click(pathname)}
-    >
+    <Styled_Button ref={ref} to={to} className={className}>
       <Styled_Text_Box>
         <Styled_Text
           children={title}
@@ -97,7 +90,6 @@ const Button = ({
           variants={variants_text}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          exit="initial"
         />
       </Styled_Text_Box>
       <Styled_Arrow_Box invertArrow={invertArrow}>
@@ -107,7 +99,6 @@ const Button = ({
           variants={variants_arrow}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          exit="initial"
         />
       </Styled_Arrow_Box>
     </Styled_Button>

@@ -6,6 +6,7 @@ import Line from "../../components/Line";
 import Title from "../../components/Title";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import Menu from "../../components/Menu";
 
 const data = {
   title: "woodrejs@gmail.com",
@@ -29,7 +30,17 @@ const variants_text = {
   },
 };
 
+const Styled_Bck = styled.div`
+  width: 100%;
+  background: ${(props) => props.theme.colors.bck};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 3vw;
+`;
 const Styled_Section = styled.section`
+  max-width: 1366px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 2fr 5fr 2fr auto;
@@ -96,27 +107,30 @@ const Styled_Button = styled(Button)`
   grid-area: 3/1/4/13;
 `;
 
-const Contact = ({ prevPath }) => {
+const Contact = () => {
   return (
-    <Styled_Section>
-      <Styled_Title isDark={true} size="m" title="m.szczepanski@gmail.com" />
+    <Styled_Bck>
+      <Menu />
+      <Styled_Section>
+        <Styled_Title isDark={true} size="m" title="m.szczepanski@gmail.com" />
 
-      <InView triggerOnce={true} threshold={0.2}>
-        {({ inView, ref }) => (
-          <Styled_Text
-            ref={ref}
-            children={data.text}
-            variants={variants_text}
-            animate={inView ? "visible" : "hidden"}
-            initial="hidden"
-          />
-        )}
-      </InView>
+        <InView triggerOnce={true} threshold={0.2}>
+          {({ inView, ref }) => (
+            <Styled_Text
+              ref={ref}
+              children={data.text}
+              variants={variants_text}
+              animate={inView ? "visible" : "hidden"}
+              initial="hidden"
+            />
+          )}
+        </InView>
 
-      <Styled_Button isDark={true} isSmall={true} title="napisz do mnie" />
-      <Styled_Line />
-      <Styled_Social />
-    </Styled_Section>
+        <Styled_Button isDark={true} isSmall={true} title="napisz do mnie" />
+        <Styled_Line />
+        <Styled_Social />
+      </Styled_Section>
+    </Styled_Bck>
   );
 };
 
