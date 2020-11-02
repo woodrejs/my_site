@@ -1,6 +1,6 @@
 import React from "react";
 import { InView } from "react-intersection-observer";
-import { variants_text } from "../../utils/motion";
+import { variants_text, variants_photo } from "../../utils/motion";
 import {
   Styled_Article,
   Styled_InfoBox,
@@ -15,8 +15,6 @@ import {
   Styled_Button,
   Styled_Line,
 } from "./ProjectSection.css";
-
-//przebudowc mobile screen
 
 const ProjectSection = ({ number, name, date, type, img }) => {
   return (
@@ -77,7 +75,7 @@ const ProjectSection = ({ number, name, date, type, img }) => {
           </Styled_InfoBox>
         )}
       </InView>
-      {/*?????????????????? photo box */}
+
       <Styled_Photo_Box to="/project">
         <InView triggerOnce={true} threshold={0.2}>
           {({ inView, ref }) => (
@@ -85,7 +83,7 @@ const ProjectSection = ({ number, name, date, type, img }) => {
               ref={ref}
               src={img}
               alt="project_photo"
-              variants={variants_text}
+              variants={variants_photo}
               animate={inView ? "visible" : "hidden"}
               initial="hidden"
               exit="hidden"

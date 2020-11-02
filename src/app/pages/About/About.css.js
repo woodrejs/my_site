@@ -29,7 +29,7 @@ export const Styled_Article = styled.article`
 export const Styled_Title = styled(Title)`
   grid-area: 1/1/2/13;
   margin: 3em 0;
-
+  z-index: 1;
   @media screen and (orientation: landscape) {
     grid-area: 1/1/2/7;
     justify-self: end;
@@ -44,8 +44,13 @@ export const Styled_Title = styled(Title)`
   }
 `;
 export const Styled_Photo = styled(motion.img)`
+  width: 100%;
+  transform-origin: bottom;
+`;
+export const Styled_Photo_Box = styled.div`
   grid-area: 2/1/3/13;
   width: 100%;
+  overflow: hidden;
 
   @media screen and (orientation: landscape) {
     grid-area: 1/6/2/13;
@@ -60,7 +65,7 @@ export const Styled_Photo = styled(motion.img)`
 export const Styled_Text_Box = styled.div`
   grid-area: 3/1/4/13;
   margin: -1.5em 0 5em 0;
-
+  z-index: 1;
   @media screen and (orientation: landscape) {
     grid-area: 2/5/3/13;
     margin: -3.5em 0 8em 0;
@@ -82,6 +87,7 @@ export const Styled_SubTitle = styled(Title)`
 `;
 export const Styled_SubTitleOutline = styled(Title)`
   margin-bottom: 4em;
+  z-index: 1;
   -webkit-text-fill-color: ${(props) => props.theme.colors.dark};
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: ${(props) => props.theme.colors.light};

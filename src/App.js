@@ -6,6 +6,7 @@ import About from "./app/pages/About";
 import Home from "./app/pages/Home";
 import Portfolio from "./app/pages/Portfolio";
 import Project from "./app/pages/Project";
+import ScrollToTop from "./app/utils/ScrollToTop";
 
 const App = () => {
   const location = useLocation();
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <main>
       <AnimatePresence exitBeforeEnter>
+        <ScrollToTop />
         <Switch location={location} key={location.key}>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />

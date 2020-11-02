@@ -3,6 +3,7 @@ import { InView } from "react-intersection-observer";
 import image from "../../../assets/images/my_photo.jpg";
 import Footer from "../../components/Footer";
 import { v4 as uuidv4 } from "uuid";
+import { useViewportScroll, useTransform } from "framer-motion";
 import Menu from "../../components/Menu";
 import { variants_text, variants_photo } from "../../utils/motion";
 import {
@@ -16,6 +17,7 @@ import {
   Styled_SubTitleOutline,
   Styled_ThirdTitle,
   Styled_Text,
+  Styled_Photo_Box,
 } from "./About.css";
 
 const data = {
@@ -37,19 +39,25 @@ const data = {
 };
 
 const About = () => {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
+
   return (
     <Styled_Bck>
       <Menu />
       <Styled_Section>
         <Styled_Article>
-          <Styled_Photo
-            src={image}
-            alt="my_photo"
-            variants={variants_photo}
-            animate="visible"
-            initial="hidden"
-            exit="hidden"
-          />
+          <Styled_Photo_Box>
+            <Styled_Photo
+              src={image}
+              alt="my_photo"
+              variants={variants_photo}
+              animate="visible"
+              initial="hidden"
+              exit="hidden"
+              style={{ scale }}
+            />
+          </Styled_Photo_Box>
           <Styled_Title title="o mnie" size="l" isDark={false} />
 
           <Styled_Text_Box>

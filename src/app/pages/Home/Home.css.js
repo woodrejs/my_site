@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "../../components/Button";
 import Title from "../../components/Title";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export const Styled_Bck = styled.div`
@@ -55,7 +56,7 @@ export const Styled_SubTitle = styled(motion.h2)`
     font-size: ${(props) => props.theme.size.xl};
   }
 `;
-export const Styled_Photo_Box = styled(motion.div)`
+export const Styled_Photo_Box = styled(Link)`
   grid-area: 2/1/4/13;
   align-self: end;
   height: 50vh;
@@ -84,4 +85,5 @@ export const Styled_Button = styled(Button)`
   grid-area: 2/2/3/13;
   align-self: end;
   justify-self: start;
+  z-index: 1;
 `;

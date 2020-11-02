@@ -119,6 +119,8 @@ export const Styled_Number = styled(motion.div)`
 export const Styled_Photo_Box = styled(Link)`
   grid-area: 2/1/3/13;
   align-self: start;
+  transform-origin: bottom;
+  overflow: hidden;
 
   @media screen and (orientation: landscape) {
     grid-area: 2/9/3/13;

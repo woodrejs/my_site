@@ -35,6 +35,7 @@ const Button = ({
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           exit="hidden"
+          whileHover="hover"
         />
       </Styled_Text_Box>
       <Styled_Arrow_Box invertArrow={invertArrow}>

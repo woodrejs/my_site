@@ -30,18 +30,16 @@ const Home = () => {
           />
         </Styled_SubTitle_Box>
 
-        <Styled_Photo_Box
-          children={
-            <Styled_Photo
-              src={image}
-              alt="my_photo"
-              variants={variants_photo}
-              animate="visible"
-              initial="hidden"
-              exit="hidden"
-            />
-          }
-        />
+        <Styled_Photo_Box to="/about">
+          <Styled_Photo
+            src={image}
+            alt="my_photo"
+            variants={variants_photo}
+            animate="visible"
+            initial="hidden"
+            exit="hidden"
+          />
+        </Styled_Photo_Box>
 
         <Styled_Button title="o mnie" to="/about" isDark={false} />
       </Styled_Section>

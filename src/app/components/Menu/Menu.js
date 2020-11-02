@@ -1,24 +1,34 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { ReactComponent as CopywriterDark } from "../../../assets/icons/dark_copywriter_icon.svg";
-import { ReactComponent as CopywriterLight } from "../../../assets/icons/light_copywriter_icon.svg";
-import { ReactComponent as HmburgerDark } from "../../../assets/icons/dark_cross_icon.svg";
-import { ReactComponent as HmburgerLight } from "../../../assets/icons/light_cross_icon.svg";
-import { ReactComponent as CloseIcon } from "../../../assets/icons/close_btn_icon.svg";
+import CopywriterDark from "../../../assets/icons/dark_copywriter_icon.svg";
+import CopywriterLight from "../../../assets/icons/light_copywriter_icon.svg";
+import HmburgerDark from "../../../assets/icons/dark_cross_icon.svg";
+import HmburgerLight from "../../../assets/icons/light_cross_icon.svg";
+import CloseIconDark from "../../../assets/icons/Close_Dark.svg";
+import CloseIconLight from "../../../assets/icons/Close_Light.svg";
 import {
-  Styled_nav,
+  variants_List,
+  variants_Item,
+  variants_Underline,
+} from "../../utils/motion";
+import {
+  Styled_Nav,
+  Styled_Brand,
+  Styled_Brand_Icon,
+  Styled_Brand_Name,
   Styled_Menu,
   Styled_MenuItem,
-  Styled_Logo,
-  Styled_BrandName,
+  Styled_MenuItem_Link,
+  Styled_MenuItem_UnderLine,
   Styled_Hamburger,
-  Styled_Span,
+  Styled_Hamburger_Name,
+  Styled_Hamburger_Icon,
   Styled_MobileMenu,
-  Styled_BtnBox,
-  Styled_MenuBox,
-  Styled_MobileMenuItem,
-  Styled_Box,
+  Styled_MobileMenu_CloseBtn,
+  Styled_MobileMenu_Box,
+  Styled_MobileMenu_Item,
+  Styled_MobileMenu_Link,
   Styled_Line,
 } from "./Menu.css";
 
@@ -28,21 +38,15 @@ const data = [
   { name: "portfolio", path: "/portfolio", id: uuid() },
   { name: "kontakt", path: "/contact", id: uuid() },
 ];
-
-const variants = {
+const variants_Menu_Mobile = {
   visible: {
-    opacity: 1,
-
-    transition: { ease: [0.7, 0.2, 0.5, 0.7], duration: 0.6, delay: 0.6 },
+    x: "70vw",
+    transition: { ease: "easeInOut", duration: 0.4, when: "beforeChildren" },
   },
-  hidden: { opacity: 0 },
-};
-const variants_arrow = {
-  visible: {
-    scaleX: 1,
-    transition: { duration: 0.6, ease: "easeInOut", delay: 0.4 },
+  hidden: {
+    x: "140vw",
+    transition: { ease: "easeInOut", duration: 0.4, when: "afterChildren" },
   },
-  hidden: { scaleX: 0 },
 };
 
 const Menu = () => {
@@ -52,52 +56,112 @@ const Menu = () => {
   const isBckDark = pathname === "/about" || pathname === "/project";
 
   return (
-    <Styled_nav isBckDark={isBckDark}>
-      <Styled_Logo to="/">
-        <Styled_Box variants={variants} initial="hidden" animate="visible">
-          {isBckDark ? <CopywriterLight /> : <CopywriterDark />}
-          <Styled_BrandName
-            children="Maciej Szczepański"
-            isBckDark={isBckDark}
-          />
-        </Styled_Box>
-      </Styled_Logo>
+    <Styled_Nav isBckDark={isBckDark}>
+      <Styled_Brand
+        to="/"
+        variants={variants_List}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+        <Styled_Brand_Icon
+          src={isBckDark ? CopywriterLight : CopywriterDark}
+          alt="copywriter_icon"
+        />
+        <Styled_Brand_Name
+          children="Maciej Szczepański"
+          isBckDark={isBckDark}
+        />
+      </Styled_Brand>
 
       <Styled_Menu
-        children={data.map(({ name, path, id }) => (
+        variants={variants_List}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+        {data.map((item, index) => (
           <Styled_MenuItem
-            key={id}
+            key={item.id}
             isBckDark={isBckDark}
-            variants={variants}
-            initial="hidden"
-            animate="visible"
+            variants={variants_Item}
+            custom={index}
+            current={item.path === pathname ? true : false}
           >
-            <Link to={path} children={name} />
-            <hr />
-          </Styled_MenuItem>
-        ))}
-      />
-
-      <Styled_Hamburger onClick={handleHamburger}>
-        <Styled_Span children="Menu" isBckDark={isBckDark} />
-        {isBckDark ? <HmburgerLight /> : <HmburgerDark />}
-      </Styled_Hamburger>
-
-      <Styled_MobileMenu isBckDark={isBckDark}>
-        <Styled_BtnBox children={<CloseIcon />} />
-        <Styled_MenuBox
-          children={data.map(({ name, path, id }) => (
-            <Styled_MobileMenuItem
-              key={id * 2}
-              to={path}
-              children={name}
+            <Styled_MenuItem_Link
+              to={item.path}
+              children={item.name}
               isBckDark={isBckDark}
             />
+            <Styled_MenuItem_UnderLine
+              variants={variants_Underline}
+              isBckDark={isBckDark}
+              custom={index}
+              current={item.path === pathname ? true : false}
+            />
+          </Styled_MenuItem>
+        ))}
+      </Styled_Menu>
+
+      <Styled_Hamburger
+        onClick={handleHamburger}
+        variants={variants_List}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+        <Styled_Hamburger_Name
+          children="Menu"
+          isBckDark={isBckDark}
+          variants={variants_Item}
+          whileHover={{ scale: 1.15 }}
+        />
+        <Styled_Hamburger_Icon
+          src={isBckDark ? HmburgerLight : HmburgerDark}
+          alt="hamburger_icon"
+          variants={variants_Item}
+          whileHover={{ scale: 1.15 }}
+        />
+      </Styled_Hamburger>
+
+      <Styled_MobileMenu
+        isBckDark={isBckDark}
+        variants={variants_Menu_Mobile}
+        initial="hidden"
+        animate={isOpen ? "visible" : "hidden"}
+        exit="hidden"
+      >
+        <Styled_MobileMenu_CloseBtn
+          src={isBckDark ? CloseIconDark : CloseIconLight}
+          onClick={handleHamburger}
+          alt="close_icon"
+          whileHover={{ scale: 1.15 }}
+        />
+
+        <Styled_MobileMenu_Box
+          variants={variants_List}
+          initial="hidden"
+          animate={isOpen ? "visible" : "hidden"}
+          exit="hidden"
+          children={data.map((item, index) => (
+            <Styled_MobileMenu_Item
+              key={item.id * 2}
+              variants={variants_Item}
+              custom={index}
+              whileHover={{ scale: 1.15 }}
+            >
+              <Styled_MobileMenu_Link
+                to={item.path}
+                children={item.name}
+                isBckDark={isBckDark}
+              />
+            </Styled_MobileMenu_Item>
           ))}
         />
       </Styled_MobileMenu>
+
       <Styled_Line isDark={!isBckDark} />
-    </Styled_nav>
+    </Styled_Nav>
   );
 };
 
