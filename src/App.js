@@ -6,21 +6,20 @@ import About from "./app/pages/About";
 import Home from "./app/pages/Home";
 import Portfolio from "./app/pages/Portfolio";
 import Project from "./app/pages/Project";
-import ScrollToTop from "./app/utils/ScrollToTop";
 
 const App = () => {
   const location = useLocation();
+  const handleScrollToTop = () => window.scrollTo(0, 0);
 
   return (
     <main>
-      <AnimatePresence exitBeforeEnter>
-        <ScrollToTop />
+      <AnimatePresence exitBeforeEnter onExitComplete={handleScrollToTop}>
         <Switch location={location} key={location.key}>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/contact" component={Contact} />
-          <Route path="/project" component={Project} />
+          <Route path="/project/:id" component={Project} />
         </Switch>
       </AnimatePresence>
     </main>

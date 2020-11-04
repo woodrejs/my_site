@@ -22,7 +22,7 @@ export const Styled_Nav = styled.nav`
     height: 130px;
   }
 `;
-export const Styled_Brand = styled(motion.Link)`
+export const Styled_Brand = styled(motion.custom(Link))`
   display: flex;
   align-self: center;
   align-items: center;

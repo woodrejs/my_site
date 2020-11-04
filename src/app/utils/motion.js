@@ -42,7 +42,7 @@ export const variants_photo = {
   },
   hover: {
     scale: 1.05,
-    transition: { ease: [0.7, 0.2, 0.5, 0.7], duration: 0.6 },
+    transition: { ease: "easeInOut", duration: 0.6 },
   },
 };
 export const variants_arrow = {

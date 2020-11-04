@@ -53,7 +53,10 @@ const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleHamburger = () => setIsOpen(!isOpen);
   const pathname = useLocation().pathname;
-  const isBckDark = pathname === "/about" || pathname === "/project";
+  const isBckDark =
+    (pathname !== "/") &
+    (pathname !== "/portfolio") &
+    (pathname !== "/contact");
 
   return (
     <Styled_Nav isBckDark={isBckDark}>

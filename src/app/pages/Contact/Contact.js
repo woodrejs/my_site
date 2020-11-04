@@ -38,7 +38,12 @@ const Contact = () => {
           )}
         </InView>
 
-        <Styled_Button isDark={true} isSmall={true} title="napisz do mnie" />
+        <Styled_Button
+          isDark={true}
+          isSmall={true}
+          title="portfolio"
+          to="/portfolio"
+        />
         <Styled_Line />
         <Styled_Social />
       </Styled_Section>

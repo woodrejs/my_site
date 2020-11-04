@@ -38,14 +38,20 @@ export const Styled_Button = styled(Button)`
   grid-area: 2/1/3/13;
   margin-bottom: 1em;
 `;
-export const Styled_MobileLayoutPhoto = styled(motion.img)`
+export const Styled_MobileLayoutPhoto_Box = styled.div`
   grid-area: 3/10/4/13;
   align-self: start;
+  overflow: hidden;
+`;
+export const Styled_DeskopLayoutPhoto_Box = styled.div`
+  grid-area: 3/1/4/9;
+  align-self: start;
+  overflow: hidden;
+`;
+export const Styled_MobileLayoutPhoto = styled(motion.img)`
   width: 100%;
 `;
 export const Styled_DeskopLayoutPhoto = styled(motion.img)`
-  grid-area: 3/1/4/9;
-  align-self: start;
   width: 100%;
 `;
 export const Styled_Footer = styled(Footer)`

@@ -12,7 +12,7 @@ export const Styled_Article = styled(motion.article)`
     height: unset;
   }
 `;
-export const Styled_InfoBox = styled(Link)`
+export const Styled_InfoBox = styled(motion.div)`
   grid-area: 2/1/3/13;
   justify-self: start;
   align-self: start;

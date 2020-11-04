@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-export const Styled_Button = styled(Link)`
+export const Styled_Button = styled(motion.custom(Link))`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
