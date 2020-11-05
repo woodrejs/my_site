@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import "lightgallery.js/dist/css/lightgallery.css";
 
 const theme = {
   colors: {

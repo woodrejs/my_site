@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import Title from "../../components/Title";
 import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
+import PhotoItem from "../../components/PhotoItem";
 
 export const Styled_Bck = styled.div`
   width: 100%;
@@ -47,12 +48,6 @@ export const Styled_DeskopLayoutPhoto_Box = styled.div`
   grid-area: 3/1/4/9;
   align-self: start;
   overflow: hidden;
-`;
-export const Styled_MobileLayoutPhoto = styled(motion.img)`
-  width: 100%;
-`;
-export const Styled_DeskopLayoutPhoto = styled(motion.img)`
-  width: 100%;
 `;
 export const Styled_Footer = styled(Footer)`
   grid-area: 3/1/4/13;
