@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Styled_Title = styled.div``;
-export const Styled_box = styled.div`
+export const StyledTitle = styled.div``;
+export const StyledBox = styled.div`
   overflow: hidden;
 `;
-export const Styled_H1 = styled(motion.h1)`
+export const StyledH1 = styled(motion.h1)`
   font-weight: 600;
   font-size: ${(props) => props.theme.size.xxxl};
   color: ${(props) =>
@@ -40,7 +40,7 @@ export const Styled_H1 = styled(motion.h1)`
     font-size: ${(props) => props.theme.size.xxxxxxxxxl};
   }
 `;
-export const Styled_H2 = styled(motion.h2)`
+export const StyledH2 = styled(motion.h2)`
   font-weight: 600;
   font-size: ${(props) => props.theme.size.xl};
   color: ${(props) =>
@@ -62,7 +62,7 @@ export const Styled_H2 = styled(motion.h2)`
     font-size: ${(props) => props.theme.size.xxxxxl};
   }
 `;
-export const Styled_H3 = styled(motion.h3)`
+export const StyledH3 = styled(motion.h3)`
   font-weight: 600;
   font-size: ${(props) => props.theme.size.l};
   color: ${(props) =>

@@ -1,35 +1,35 @@
 import React from "react";
 import {
-  Styled_Footer,
-  Styled_Line,
-  Styled_Button_Box,
-  Styled_Button,
-  Styled_Social,
+  StyledFooter,
+  StyledLine,
+  StyledButtonBox,
+  StyledButton,
+  StyledSocial,
 } from "./Footer.css";
 
 const Footer = ({ isDark, className }) => {
   return (
-    <Styled_Footer className={className}>
-      <Styled_Line isDark={isDark} />
+    <StyledFooter className={className}>
+      <StyledLine isDark={isDark} />
 
-      <Styled_Button_Box>
-        <Styled_Button
+      <StyledButtonBox>
+        <StyledButton
           title="portfolio"
           to="/portfolio"
           isDark={isDark}
           isSmall={false}
         />
 
-        <Styled_Button
+        <StyledButton
           title="kontakt"
           to="/contact"
           isDark={isDark}
           isSmall={false}
         />
-      </Styled_Button_Box>
+      </StyledButtonBox>
 
-      <Styled_Social isDark={isDark} />
-    </Styled_Footer>
+      <StyledSocial isDark={isDark} />
+    </StyledFooter>
   );
 };
 export default Footer;

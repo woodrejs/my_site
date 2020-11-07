@@ -1,15 +1,15 @@
 import React from "react";
 import Menu from "../../components/Menu";
 import { InView } from "react-intersection-observer";
-import { variants_text } from "../../utils/motion";
+import { variants_text } from "../../utils/motion/index";
 import {
-  Styled_Bck,
-  Styled_Section,
-  Styled_Title,
-  Styled_Text,
-  Styled_Line,
-  Styled_Social,
-  Styled_Button,
+  StyledBck,
+  StyledSection,
+  StyledTitle,
+  StyledText,
+  StyledLine,
+  StyledSocial,
+  StyledButton,
 } from "./Contact.css";
 
 const DATA = {
@@ -20,14 +20,14 @@ const DATA = {
 
 const Contact = () => {
   return (
-    <Styled_Bck>
+    <StyledBck>
       <Menu />
-      <Styled_Section>
-        <Styled_Title isDark={true} size="m" title="m.szczepanski@gmail.com" />
+      <StyledSection>
+        <StyledTitle isDark={true} size="m" title="m.szczepanski@gmail.com" />
 
         <InView triggerOnce={true} threshold={0.2}>
           {({ inView, ref }) => (
-            <Styled_Text
+            <StyledText
               ref={ref}
               children={DATA.text}
               variants={variants_text}
@@ -38,16 +38,16 @@ const Contact = () => {
           )}
         </InView>
 
-        <Styled_Button
+        <StyledButton
           isDark={true}
           isSmall={true}
           title="portfolio"
           to="/portfolio"
         />
-        <Styled_Line />
-        <Styled_Social />
-      </Styled_Section>
-    </Styled_Bck>
+        <StyledLine />
+        <StyledSocial />
+      </StyledSection>
+    </StyledBck>
   );
 };
 

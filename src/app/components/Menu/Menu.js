@@ -1,35 +1,29 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import CopywriterDark from "../../../assets/icons/dark_copywriter_icon.svg";
-import CopywriterLight from "../../../assets/icons/light_copywriter_icon.svg";
-import HmburgerDark from "../../../assets/icons/dark_cross_icon.svg";
-import HmburgerLight from "../../../assets/icons/light_cross_icon.svg";
-import CloseIconDark from "../../../assets/icons/Close_Dark.svg";
-import CloseIconLight from "../../../assets/icons/Close_Light.svg";
 import {
-  variants_List,
-  variants_Item,
-  variants_Underline,
-} from "../../utils/motion";
+  variants_list,
+  variants_item,
+  variants_underline,
+} from "../../utils/motion/index";
 import {
-  Styled_Nav,
-  Styled_Brand,
-  Styled_Brand_Icon,
-  Styled_Brand_Name,
-  Styled_Menu,
-  Styled_MenuItem,
-  Styled_MenuItem_Link,
-  Styled_MenuItem_UnderLine,
-  Styled_Hamburger,
-  Styled_Hamburger_Name,
-  Styled_Hamburger_Icon,
-  Styled_MobileMenu,
-  Styled_MobileMenu_CloseBtn,
-  Styled_MobileMenu_Box,
-  Styled_MobileMenu_Item,
-  Styled_MobileMenu_Link,
-  Styled_Line,
+  StyledNav,
+  StyledBrand,
+  StyledBrandIcon,
+  StyledBrandName,
+  StyledMenu,
+  StyledMenuItem,
+  StyledMenuItemLink,
+  StyledMenuItemUnderLine,
+  StyledHamburger,
+  StyledHamburgerName,
+  StyledHamburgerIcon,
+  StyledMobileMenu,
+  StyledMobileMenuCloseBtn,
+  StyledMobileMenuBox,
+  StyledMobileMenuItem,
+  StyledMobileMenuLink,
+  StyledLine,
 } from "./Menu.css";
 
 const data = [
@@ -53,118 +47,126 @@ const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleHamburger = () => setIsOpen(!isOpen);
   const pathname = useLocation().pathname;
-  const isBckDark =
+  const isdark =
     (pathname !== "/") &
     (pathname !== "/portfolio") &
     (pathname !== "/contact");
 
   return (
-    <Styled_Nav isBckDark={isBckDark}>
-      <Styled_Brand
+    <StyledNav isdark={isdark}>
+      <StyledBrand
         to="/"
-        variants={variants_List}
+        variants={variants_list}
         initial="hidden"
         animate="visible"
         exit="hidden"
       >
-        <Styled_Brand_Icon
-          src={isBckDark ? CopywriterLight : CopywriterDark}
+        <StyledBrandIcon
+          src={
+            isdark
+              ? `${process.env.PUBLIC_URL}/assets/icons/light_copywriter_icon.svg`
+              : `${process.env.PUBLIC_URL}/assets/icons/dark_copywriter_icon.svg`
+          }
           alt="copywriter_icon"
         />
-        <Styled_Brand_Name
-          children="Maciej Szczepański"
-          isBckDark={isBckDark}
-        />
-      </Styled_Brand>
+        <StyledBrandName children="Maciej Szczepański" isdark={isdark} />
+      </StyledBrand>
 
-      <Styled_Menu
-        variants={variants_List}
+      <StyledMenu
+        variants={variants_list}
         initial="hidden"
         animate="visible"
         exit="hidden"
       >
         {data.map((item, index) => (
-          <Styled_MenuItem
+          <StyledMenuItem
             key={item.id}
-            isBckDark={isBckDark}
-            variants={variants_Item}
+            isdark={isdark}
+            variants={variants_item}
             custom={index}
-            current={item.path === pathname ? true : false}
           >
-            <Styled_MenuItem_Link
+            <StyledMenuItemLink
               to={item.path}
               children={item.name}
-              isBckDark={isBckDark}
+              isdark={isdark}
             />
-            <Styled_MenuItem_UnderLine
-              variants={variants_Underline}
-              isBckDark={isBckDark}
+            <StyledMenuItemUnderLine
+              variants={variants_underline}
+              animate={item.path === pathname ? "visible" : "hidden"}
+              isdark={isdark}
               custom={index}
-              current={item.path === pathname ? true : false}
             />
-          </Styled_MenuItem>
+          </StyledMenuItem>
         ))}
-      </Styled_Menu>
+      </StyledMenu>
 
-      <Styled_Hamburger
+      <StyledHamburger
         onClick={handleHamburger}
-        variants={variants_List}
+        variants={variants_list}
         initial="hidden"
         animate="visible"
         exit="hidden"
       >
-        <Styled_Hamburger_Name
+        <StyledHamburgerName
           children="Menu"
-          isBckDark={isBckDark}
-          variants={variants_Item}
+          isdark={isdark}
+          variants={variants_item}
           whileHover={{ scale: 1.15 }}
         />
-        <Styled_Hamburger_Icon
-          src={isBckDark ? HmburgerLight : HmburgerDark}
+        <StyledHamburgerIcon
+          src={
+            isdark
+              ? `${process.env.PUBLIC_URL}/assets/icons/light_cross_icon.svg`
+              : `${process.env.PUBLIC_URL}/assets/icons/dark_cross_icon.svg`
+          }
           alt="hamburger_icon"
-          variants={variants_Item}
+          variants={variants_item}
           whileHover={{ scale: 1.15 }}
         />
-      </Styled_Hamburger>
+      </StyledHamburger>
 
-      <Styled_MobileMenu
-        isBckDark={isBckDark}
+      <StyledMobileMenu
+        isdark={isdark}
         variants={variants_Menu_Mobile}
         initial="hidden"
         animate={isOpen ? "visible" : "hidden"}
         exit="hidden"
       >
-        <Styled_MobileMenu_CloseBtn
-          src={isBckDark ? CloseIconDark : CloseIconLight}
+        <StyledMobileMenuCloseBtn
+          src={
+            isdark
+              ? `${process.env.PUBLIC_URL}/assets/icons/Close_Dark.svg`
+              : `${process.env.PUBLIC_URL}/assets/icons/Close_Light.svg`
+          }
           onClick={handleHamburger}
           alt="close_icon"
           whileHover={{ scale: 1.15 }}
         />
 
-        <Styled_MobileMenu_Box
-          variants={variants_List}
+        <StyledMobileMenuBox
+          variants={variants_list}
           initial="hidden"
           animate={isOpen ? "visible" : "hidden"}
           exit="hidden"
           children={data.map((item, index) => (
-            <Styled_MobileMenu_Item
-              key={item.id * 2}
-              variants={variants_Item}
+            <StyledMobileMenuItem
+              key={`${item.id}${Math.random()}`}
+              variants={variants_item}
               custom={index}
               whileHover={{ scale: 1.15 }}
             >
-              <Styled_MobileMenu_Link
+              <StyledMobileMenuLink
                 to={item.path}
                 children={item.name}
-                isBckDark={isBckDark}
+                isdark={isdark}
               />
-            </Styled_MobileMenu_Item>
+            </StyledMobileMenuItem>
           ))}
         />
-      </Styled_MobileMenu>
+      </StyledMobileMenu>
 
-      <Styled_Line isDark={!isBckDark} />
-    </Styled_Nav>
+      <StyledLine isDark={!isdark} />
+    </StyledNav>
   );
 };
 

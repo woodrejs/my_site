@@ -1,12 +1,8 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { v4 as uuidv4 } from "uuid";
-import { variants_title } from "../../utils/motion";
-import {
-  Styled_Social,
-  Styled_Social_Box,
-  Styled_Social_Item,
-} from "./Social.css";
+import { variants_title } from "../../utils/motion/index";
+import { StyledSocial, StyledSocialBox, StyledSocialItem } from "./Social.css";
 
 const DATA = [
   { name: "facebook", id: uuidv4(), href: "#" },
@@ -21,10 +17,10 @@ const Social = ({ className, isDark = true }) => {
   });
 
   return (
-    <Styled_Social className={className} ref={ref}>
-      <Styled_Social_Box>
+    <StyledSocial className={className} ref={ref}>
+      <StyledSocialBox>
         {DATA.map(({ name, id, href }) => (
-          <Styled_Social_Item
+          <StyledSocialItem
             children={name}
             key={id}
             isDark={isDark}
@@ -35,8 +31,8 @@ const Social = ({ className, isDark = true }) => {
             exit="hidden"
           />
         ))}
-      </Styled_Social_Box>
-    </Styled_Social>
+      </StyledSocialBox>
+    </StyledSocial>
   );
 };
 export default Social;

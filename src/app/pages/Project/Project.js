@@ -1,49 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Menu from "../../components/Menu";
-import { Projects_Data } from "../../../assets/content/Projects.data";
+import { PortfolioData } from "../Portfolio/Portfolio.data";
 import { LightgalleryProvider } from "react-lightgallery";
 import PhotoItem from "../../components/PhotoItem";
 import {
-  Styled_Bck,
-  Styled_Section,
-  Styled_Article,
-  Styled_Title,
-  Styled_Button,
-  Styled_Footer,
-  Styled_MobileLayoutPhoto_Box,
-  Styled_DeskopLayoutPhoto_Box,
+  StyledBck,
+  StyledSection,
+  StyledArticle,
+  StyledTitle,
+  StyledButton,
+  StyledFooter,
+  StyledMobileLayoutPhotoBox,
+  StyledDeskopLayoutPhotoBox,
 } from "./Project.css";
+import Scrollbar from "smooth-scrollbar";
 
 const Project = () => {
   let { id } = useParams();
-  const DATA = Projects_Data.filter((item) => item.id === id)[0];
+  const DATA = PortfolioData.filter((item) => item.id === id)[0];
+
+  const scroll = React.createRef();
+  useEffect(() => {
+    Scrollbar.init(scroll.current, { damping: 0.05 });
+  });
 
   return (
-    <Styled_Bck>
+    <StyledBck ref={scroll}>
       <Menu />
-      <Styled_Section>
-        <Styled_Article>
-          <Styled_Title title={DATA.name} size="l" isDark={false} />
-          <Styled_Button
+      <StyledSection>
+        <StyledArticle>
+          <StyledTitle title={DATA.name} size="l" isDark={false} />
+          <StyledButton
             title="powrót"
             to="/portfolio"
             isDark={false}
             invertArrow={true}
           />
           <LightgalleryProvider galleryClassName="my_custom_classname">
-            <Styled_MobileLayoutPhoto_Box>
+            <StyledMobileLayoutPhotoBox>
               <PhotoItem image={DATA.mobileImage} alt="Mobile_Layout_Photo" />
-            </Styled_MobileLayoutPhoto_Box>
+            </StyledMobileLayoutPhotoBox>
 
-            <Styled_DeskopLayoutPhoto_Box>
+            <StyledDeskopLayoutPhotoBox>
               <PhotoItem image={DATA.deskopImage} alt="Deskop_Layout_Photo" />
-            </Styled_DeskopLayoutPhoto_Box>
+            </StyledDeskopLayoutPhotoBox>
           </LightgalleryProvider>
-        </Styled_Article>
-      </Styled_Section>
-      <Styled_Footer isDark={false} />
-    </Styled_Bck>
+        </StyledArticle>
+      </StyledSection>
+      <StyledFooter isDark={false} />
+    </StyledBck>
   );
 };
 

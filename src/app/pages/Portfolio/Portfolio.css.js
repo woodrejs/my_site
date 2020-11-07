@@ -3,16 +3,22 @@ import Title from "../../components/Title";
 import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
 
-export const Styled_Bck = styled.div`
+export const StyledBck = styled.div`
   width: 100%;
   background: ${(props) => props.theme.colors.bck};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   padding: 0 3vw;
+
+  :first-child {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
 `;
-export const Styled_Section = styled.section`
+export const StyledSection = styled.section`
   max-width: 1366px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -34,18 +40,18 @@ export const Styled_Section = styled.section`
     grid-template-rows: 80vh auto auto;
   }
 `;
-export const Styled_Title = styled(Title)`
+export const StyledTitle = styled(Title)`
   grid-area: 1/1/2/13;
   align-self: start;
   margin-top: 5vh;
 `;
-export const Styled_SubTitle_Box = styled.div`
+export const StyledSubTitleBox = styled.div`
   overflow: hidden;
   grid-area: 1/1/2/13;
   justify-self: end;
   align-self: end;
 `;
-export const Styled_SubTitle = styled(motion.h4)`
+export const StyledSubTitle = styled(motion.h4)`
   width: 100%;
   text-align: right;
 
@@ -60,9 +66,9 @@ export const Styled_SubTitle = styled(motion.h4)`
     font-size: ${(props) => props.theme.size.s};
   }
 `;
-export const Styled_Projects_Box = styled.div`
+export const StyledProjectsBox = styled.div`
   grid-area: 2/1/3/13;
 `;
-export const Styled_Footer = styled(Footer)`
+export const StyledFooter = styled(Footer)`
   grid-area: 3/1/4/13;
 `;

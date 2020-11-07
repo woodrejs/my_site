@@ -1,28 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProjectSection from "../../components/ProjectSection";
 import Menu from "../../components/Menu";
-import { variants_title } from "../../utils/motion";
-import { Projects_Data } from "../../../assets/content/Projects.data";
+import { variants_title } from "../../utils/motion/index";
+import { PortfolioData } from "./Portfolio.data";
 import {
-  Styled_Bck,
-  Styled_Section,
-  Styled_Title,
-  Styled_SubTitle_Box,
-  Styled_SubTitle,
-  Styled_Projects_Box,
-  Styled_Footer,
+  StyledBck,
+  StyledSection,
+  StyledTitle,
+  StyledSubTitleBox,
+  StyledSubTitle,
+  StyledProjectsBox,
+  StyledFooter,
 } from "./Portfolio.css";
+import Scrollbar from "smooth-scrollbar";
 
 const Portfolio = () => {
-  return (
-    <Styled_Bck>
-      <Menu />
-      <Styled_Section>
-        <Styled_Title title="projekty" size="l" />
+  const scroll = React.createRef();
+  useEffect(() => {
+    Scrollbar.init(scroll.current, { damping: 0.05 });
+  });
 
-        <Styled_SubTitle_Box
+  return (
+    <StyledBck ref={scroll}>
+      <Menu />
+      <StyledSection>
+        <StyledTitle title="projekty" size="l" />
+
+        <StyledSubTitleBox
           children={
-            <Styled_SubTitle
+            <StyledSubTitle
               children="informacje"
               variants={variants_title}
               animate="visible"
@@ -32,8 +38,8 @@ const Portfolio = () => {
           }
         />
 
-        <Styled_Projects_Box>
-          {Projects_Data.map(({ name, id, number, date, type, thumbnail }) => (
+        <StyledProjectsBox>
+          {PortfolioData.map(({ name, id, number, date, type, thumbnail }) => (
             <ProjectSection
               key={id}
               id={id}
@@ -44,10 +50,10 @@ const Portfolio = () => {
               number={number}
             />
           ))}
-        </Styled_Projects_Box>
-      </Styled_Section>
-      <Styled_Footer />
-    </Styled_Bck>
+        </StyledProjectsBox>
+      </StyledSection>
+      <StyledFooter />
+    </StyledBck>
   );
 };
 

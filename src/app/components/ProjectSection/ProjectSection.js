@@ -1,34 +1,35 @@
 import React from "react";
 import { InView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 import {
   variants_text,
+  variants_item,
   variants_photo,
-  variants_List,
-  variants_Item,
-} from "../../utils/motion";
+  variants_list,
+} from "../../utils/motion/index";
 import {
-  Styled_Article,
-  Styled_InfoBox,
-  Styled_Title,
-  Styled_Date,
-  Styled_Type,
-  Styled_DateData,
-  Styled_TypeData,
-  Styled_Number,
-  Styled_Photo_Box,
-  Styled_Photo,
-  Styled_Button,
-  Styled_Line,
+  StyledArticle,
+  StyledInfoBox,
+  StyledTitle,
+  StyledDate,
+  StyledType,
+  StyledDateData,
+  StyledTypeData,
+  StyledNumber,
+  StyledPhotoBox,
+  StyledPhoto,
+  StyledButton,
+  StyledLine,
 } from "./ProjectSection.css";
 
 const ProjectSection = ({ number, name, date, type, thumbnail, id }) => {
   return (
-    <Styled_Article>
-      <Styled_Line isDark={false} />
+    <StyledArticle>
+      <StyledLine isDark={false} />
 
       <InView triggerOnce={true} threshold={0.2}>
         {({ inView, ref }) => (
-          <Styled_Number
+          <StyledNumber
             ref={ref}
             children={number}
             variants={variants_text}
@@ -41,49 +42,54 @@ const ProjectSection = ({ number, name, date, type, thumbnail, id }) => {
 
       <InView triggerOnce={true} threshold={0.2}>
         {({ inView, ref }) => (
-          <Styled_InfoBox
+          <StyledInfoBox
             ref={ref}
-            variants={variants_List}
+            variants={variants_list}
             animate={inView ? "visible" : "hidden"}
             initial="hidden"
             exit="hidden"
           >
-            <Styled_Title children={name} variants={variants_Item} custom={0} />
-            <Styled_Date children="data" variants={variants_Item} custom={1} />
-            <Styled_Type children="typ" variants={variants_Item} custom={3} />
-            <Styled_TypeData
+            <StyledTitle children={name} variants={variants_item} custom={0} />
+            <StyledDate children="data" variants={variants_item} custom={1} />
+            <StyledType children="typ" variants={variants_item} custom={3} />
+            <StyledTypeData
               children={type}
-              variants={variants_Item}
+              variants={variants_item}
               custom={4}
             />
-            <Styled_DateData
+            <StyledDateData
               children={date}
-              variants={variants_Item}
+              variants={variants_item}
               custom={2}
             />
-          </Styled_InfoBox>
+          </StyledInfoBox>
         )}
       </InView>
 
-      <Styled_Photo_Box to={`/project/${id}`}>
-        <InView triggerOnce={true} threshold={0}>
-          {({ inView, ref }) => (
-            <Styled_Photo
-              ref={ref}
-              src={thumbnail}
-              alt="project_photo"
-              variants={variants_photo}
-              animate={inView ? "visible" : "hidden"}
-              initial="hidden"
-              exit="hidden"
-              whileHover="hover"
-            />
-          )}
-        </InView>
-      </Styled_Photo_Box>
+      <StyledPhotoBox>
+        <Link to={`/project/${id}`}>
+          <InView triggerOnce={true} threshold={0}>
+            {({ inView, ref }) => (
+              <StyledPhoto
+                srcSet={`${thumbnail.sm} 400w,
+                ${thumbnail.xl} 800w`}
+                sizes="(max-width: 414px) 400px,800px"
+                src={thumbnail.xl}
+                ref={ref}
+                alt="project_photo"
+                variants={variants_photo}
+                animate={inView ? "visible" : "hidden"}
+                initial="hidden"
+                exit="hidden"
+                whileHover="hover"
+              />
+            )}
+          </InView>
+        </Link>
+      </StyledPhotoBox>
 
-      <Styled_Button title={name} to="/project" />
-    </Styled_Article>
+      <StyledButton title={name} to={`/project/${id}`} />
+    </StyledArticle>
   );
 };
 

@@ -4,7 +4,7 @@ import Title from "../../components/Title";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-export const Styled_Bck = styled.div`
+export const StyledBck = styled.div`
   width: 100%;
   background: ${(props) => props.theme.colors.bck};
   display: flex;
@@ -13,7 +13,7 @@ export const Styled_Bck = styled.div`
   justify-content: flex-start;
   padding: 0 3vw;
 `;
-export const Styled_Section = styled.section`
+export const StyledSection = styled.section`
   max-width: 1366px;
   background: ${(props) => props.theme.colors.bck};
   display: grid;
@@ -31,18 +31,18 @@ export const Styled_Section = styled.section`
     height: calc(100vh - 130px);
   }
 `;
-export const Styled_Title = styled(Title)`
+export const StyledTitle = styled(Title)`
   grid-area: 1/1/2/13;
   margin-top: 0.5em;
 `;
-export const Styled_SubTitle_Box = styled(motion.div)`
+export const StyledSubTitleBox = styled(motion.div)`
   grid-area: 1/1/2/13;
   justify-self: end;
   align-self: end;
   margin-bottom: 0.1em;
   overflow: hidden;
 `;
-export const Styled_SubTitle = styled(motion.h2)`
+export const StyledSubTitle = styled(motion.h2)`
   font-weight: 400;
   font-size: ${(props) => props.theme.size.m};
   color: ${(props) => props.theme.colors.dark};
@@ -56,7 +56,7 @@ export const Styled_SubTitle = styled(motion.h2)`
     font-size: ${(props) => props.theme.size.xl};
   }
 `;
-export const Styled_Photo_Box = styled(Link)`
+export const StyledPhotoBox = styled(Link)`
   grid-area: 2/1/4/13;
   align-self: end;
   height: 50vh;
@@ -78,10 +78,10 @@ export const Styled_Photo_Box = styled(Link)`
     height: 30vh;
   }
 `;
-export const Styled_Photo = styled(motion.img)`
+export const StyledPhoto = styled(motion.img)`
   width: 100%;
 `;
-export const Styled_Button = styled(Button)`
+export const StyledButton = styled(Button)`
   grid-area: 2/2/3/13;
   align-self: end;
   justify-self: start;

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Line from "../Line";
 
-export const Styled_Nav = styled.nav`
+export const StyledNav = styled.nav`
   max-width: 1366px;
   width: 100%;
   height: 90px;
@@ -11,7 +11,7 @@ export const Styled_Nav = styled.nav`
   grid-template-columns: repeat(12, 1fr);
 
   background: ${(props) =>
-    props.isBckDark
+    props.isdark
       ? (props) => props.theme.colors.dark
       : (props) => props.theme.colors.bck};
 
@@ -22,7 +22,7 @@ export const Styled_Nav = styled.nav`
     height: 130px;
   }
 `;
-export const Styled_Brand = styled(motion.custom(Link))`
+export const StyledBrand = styled(motion.custom(Link))`
   display: flex;
   align-self: center;
   align-items: center;
@@ -33,17 +33,17 @@ export const Styled_Brand = styled(motion.custom(Link))`
     grid-area: 1/1/2/8;
   }
 `;
-export const Styled_Brand_Icon = styled(motion.img)`
+export const StyledBrandIcon = styled(motion.img)`
   height: 18px;
 `;
-export const Styled_Brand_Name = styled(motion.span)`
+export const StyledBrandName = styled(motion.span)`
   margin-left: 1em;
   text-transform: uppercase;
 
   font-weight: 600;
   letter-spacing: 0.02em;
   color: ${(props) =>
-    props.isBckDark
+    props.isdark
       ? (props) => props.theme.colors.light
       : (props) => props.theme.colors.dark};
   font-size: ${(props) => props.theme.size.xxs};
@@ -55,7 +55,7 @@ export const Styled_Brand_Name = styled(motion.span)`
     font-size: ${(props) => props.theme.size.xs};
   }
 `;
-export const Styled_Menu = styled(motion.div)`
+export const StyledMenu = styled(motion.div)`
   display: none;
   align-self: center;
   justify-content: space-between;
@@ -72,7 +72,7 @@ export const Styled_Menu = styled(motion.div)`
     grid-area: 1/8/2/13;
   }
 `;
-export const Styled_MenuItem = styled(motion.div)`
+export const StyledMenuItem = styled(motion.div)`
   cursor: pointer;
   transition: 0.3s;
   scale: ${(props) => (props.current ? 1.1 : 1)}
@@ -84,7 +84,7 @@ export const Styled_MenuItem = styled(motion.div)`
     scale: 1;
   }
 `;
-export const Styled_MenuItem_Link = styled(Link)`
+export const StyledMenuItemLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
@@ -92,7 +92,7 @@ export const Styled_MenuItem_Link = styled(Link)`
   line-height: 180%;
 
   color: ${(props) =>
-    props.isBckDark
+    props.isdark
       ? (props) => props.theme.colors.light
       : (props) => props.theme.colors.dark};
   font-size: ${(props) => props.theme.size.xxs};
@@ -104,16 +104,14 @@ export const Styled_MenuItem_Link = styled(Link)`
     font-size: ${(props) => props.theme.size.xs};
   }
 `;
-export const Styled_MenuItem_UnderLine = styled(motion.hr)`
+export const StyledMenuItemUnderLine = styled(motion.div)`
   transform-origin: left;
   transition: 0.3s;
-  scale: ${(props) => (props.current ? 1 : 0)};
-  color: ${(props) =>
-    props.isBckDark
-      ? (props) => props.theme.colors.light
-      : (props) => props.theme.colors.dark};
+  border-bottom: 2px solid
+    ${(props) =>
+      props.isdark ? props.theme.colors.light : props.theme.colors.dark};
 `;
-export const Styled_Hamburger = styled(motion.div)`
+export const StyledHamburger = styled(motion.div)`
   align-self: center;
   grid-area: 1/9/2/13;
   display: flex;
@@ -128,20 +126,20 @@ export const Styled_Hamburger = styled(motion.div)`
     display: none;
   }
 `;
-export const Styled_Hamburger_Name = styled(motion.span)`
+export const StyledHamburgerName = styled(motion.span)`
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 100%;
   margin-right: 1.2em;
   color: ${(props) =>
-    props.isBckDark
+    props.isdark
       ? (props) => props.theme.colors.light
       : (props) => props.theme.colors.dark};
   font-size: ${(props) => props.theme.size.xxs};
 `;
-export const Styled_Hamburger_Icon = styled(motion.img)``;
-export const Styled_MobileMenu = styled(motion.div)`
+export const StyledHamburgerIcon = styled(motion.img)``;
+export const StyledMobileMenu = styled(motion.div)`
   position: fixed;
   height: 100vh;
   width: 70%;
@@ -153,7 +151,7 @@ export const Styled_MobileMenu = styled(motion.div)`
   align-items: center;
   z-index: 10;
   background: ${(props) =>
-    props.isBckDark
+    props.isdark
       ? (props) => props.theme.colors.bck
       : (props) => props.theme.colors.dark};
 
@@ -164,7 +162,7 @@ export const Styled_MobileMenu = styled(motion.div)`
     display: none;
   }
 `;
-export const Styled_MobileMenu_CloseBtn = styled(motion.img)`
+export const StyledMobileMenuCloseBtn = styled(motion.img)`
   position: absolute;
   top: 50px;
   right: 50px;
@@ -176,14 +174,14 @@ export const Styled_MobileMenu_CloseBtn = styled(motion.img)`
     flex: 2;
   }
 `;
-export const Styled_MobileMenu_Box = styled(motion.div)`
+export const StyledMobileMenuBox = styled(motion.div)`
   flex: 8;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 `;
-export const Styled_MobileMenu_Item = styled(motion.div)`
+export const StyledMobileMenuItem = styled(motion.div)`
   margin: 2em 0;
   cursor: pointer;
 
@@ -194,14 +192,14 @@ export const Styled_MobileMenu_Item = styled(motion.div)`
     margin: 0.3em 0;
   }
 `;
-export const Styled_MobileMenu_Link = styled(Link)`
+export const StyledMobileMenuLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.02em;
   font-size: ${(props) => props.theme.size.m};
   color: ${(props) =>
-    props.isBckDark
+    props.isdark
       ? (props) => props.theme.colors.dark
       : (props) => props.theme.colors.bck};
 
@@ -215,7 +213,7 @@ export const Styled_MobileMenu_Link = styled(Link)`
     font-size: ${(props) => props.theme.size.xl};
   }
 `;
-export const Styled_Line = styled(Line)`
+export const StyledLine = styled(Line)`
   grid-area: 1/1/2/13;
   align-self: end;
 `;

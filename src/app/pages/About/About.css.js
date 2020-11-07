@@ -2,31 +2,45 @@ import Title from "../../components/Title";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Styled_Bck = styled.div`
+export const StyledBck = styled.div`
   width: 100%;
   background: ${(props) => props.theme.colors.dark};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   padding: 0 3vw;
+  :first-child {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
 `;
-export const Styled_Section = styled.section`
+export const StyledSection = styled.section`
   max-width: 1366px;
   @media screen and (orientation: landscape) {
     padding-top: 3em;
   }
 `;
-export const Styled_Article = styled.article`
+export const StyledArticle = styled.article`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto 70vh auto;
 
   @media screen and (orientation: landscape) {
-    grid-template-rows: auto auto;
+    grid-template-rows: 135vh auto;
+  }
+  @media screen and (min-width: 800px) and (orientation: landscape) {
+    grid-template-rows: 75vh auto;
+  }
+  @media screen and (min-width: 1440px) and (orientation: landscape) {
+    grid-template-rows: 100vh auto;
+  }
+  @media screen and (min-width: 1920px) and (orientation: landscape) {
+    grid-template-rows: 80vh auto;
   }
 `;
-export const Styled_Title = styled(Title)`
+export const StyledTitle = styled(Title)`
   grid-area: 1/1/2/13;
   margin: 3em 0;
   z-index: 1;
@@ -43,13 +57,15 @@ export const Styled_Title = styled(Title)`
     grid-area: 1/1/2/9;
   }
 `;
-export const Styled_Photo = styled(motion.img)`
+export const StyledPhoto = styled(motion.img)`
   width: 100%;
+
   transform-origin: bottom;
 `;
-export const Styled_Photo_Box = styled.div`
+export const StyledPhotoBox = styled.div`
   grid-area: 2/1/3/13;
   width: 100%;
+
   overflow: hidden;
 
   @media screen and (orientation: landscape) {
@@ -62,7 +78,7 @@ export const Styled_Photo_Box = styled.div`
     grid-area: 1/8/2/13;
   }
 `;
-export const Styled_Text_Box = styled.div`
+export const StyledTextBox = styled.div`
   grid-area: 3/1/4/13;
   margin: -1.5em 0 5em 0;
   z-index: 1;
@@ -78,24 +94,24 @@ export const Styled_Text_Box = styled.div`
     grid-area: 2/7/3/13;
   }
 `;
-export const Styled_SubTitle = styled(Title)`
+export const StyledSubTitle = styled(Title)`
   margin: 0 0 1em 0;
 
   @media screen and (orientation: landscape) {
-    max-width: 40vw;
+    max-width: 42vw;
   }
 `;
-export const Styled_SubTitleOutline = styled(Title)`
+export const StyledSubTitleOutline = styled(Title)`
   margin-bottom: 4em;
   z-index: 1;
   -webkit-text-fill-color: ${(props) => props.theme.colors.dark};
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: ${(props) => props.theme.colors.light};
 `;
-export const Styled_ThirdTitle = styled(Title)`
+export const StyledThirdTitle = styled(Title)`
   margin-bottom: 3em;
 `;
-export const Styled_Text = styled(motion.p)`
+export const StyledText = styled(motion.p)`
   margin-bottom: 5em;
   font-weight: 400;
   font-size: ${(props) => props.theme.size.xs};

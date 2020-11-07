@@ -1,13 +1,13 @@
 import React from "react";
 import { InView } from "react-intersection-observer";
-import { Styled_Line } from "./Line.css";
-import { variants_line } from "../../utils/motion";
+import { StyledLine } from "./Line.css";
+import { variants_line } from "../../utils/motion/index";
 
 const Line = ({ isDark, className }) => {
   return (
     <InView triggerOnce={true}>
       {({ inView, ref }) => (
-        <Styled_Line
+        <StyledLine
           ref={ref}
           className={className}
           isDark={isDark}

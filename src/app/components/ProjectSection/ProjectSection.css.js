@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import Button from "../Button";
 import { motion } from "framer-motion";
 import Line from "../Line";
 
-export const Styled_Article = styled(motion.article)`
+export const StyledArticle = styled(motion.article)`
   @media screen and (orientation: landscape) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -12,7 +11,7 @@ export const Styled_Article = styled(motion.article)`
     height: unset;
   }
 `;
-export const Styled_InfoBox = styled(motion.div)`
+export const StyledInfoBox = styled(motion.div)`
   grid-area: 2/1/3/13;
   justify-self: start;
   align-self: start;
@@ -26,7 +25,7 @@ export const Styled_InfoBox = styled(motion.div)`
     display: none;
   }
 `;
-export const Styled_Title = styled(motion.h3)`
+export const StyledTitle = styled(motion.h3)`
   grid-area: 1/1/2/4;
   display: none;
   font-weight: 600;
@@ -41,7 +40,7 @@ export const Styled_Title = styled(motion.h3)`
     font-size: ${(props) => props.theme.size.s};
   }
 `;
-export const Styled_Date = styled(motion.span)`
+export const StyledDate = styled(motion.span)`
   grid-area: 1/5/2/6;
   display: none;
 
@@ -57,7 +56,7 @@ export const Styled_Date = styled(motion.span)`
     font-size: ${(props) => props.theme.size.s};
   }
 `;
-export const Styled_Type = styled(motion.span)`
+export const StyledType = styled(motion.span)`
   grid-area: 2/5/3/6;
   display: none;
   font-weight: 400;
@@ -72,7 +71,7 @@ export const Styled_Type = styled(motion.span)`
     font-size: ${(props) => props.theme.size.s};
   }
 `;
-export const Styled_DateData = styled(motion.span)`
+export const StyledDateData = styled(motion.span)`
   grid-area: 1/7/2/8;
   display: none;
   font-weight: 400;
@@ -87,7 +86,7 @@ export const Styled_DateData = styled(motion.span)`
     font-size: ${(props) => props.theme.size.s};
   }
 `;
-export const Styled_TypeData = styled(motion.span)`
+export const StyledTypeData = styled(motion.span)`
   grid-area: 2/7/3/8;
   display: none;
   font-weight: 400;
@@ -102,7 +101,7 @@ export const Styled_TypeData = styled(motion.span)`
     font-size: ${(props) => props.theme.size.s};
   }
 `;
-export const Styled_Number = styled(motion.div)`
+export const StyledNumber = styled(motion.div)`
   font-weight: 600;
   font-size: ${(props) => props.theme.size.s};
   line-height: 100%;
@@ -116,7 +115,7 @@ export const Styled_Number = styled(motion.div)`
     margin: 0;
   }
 `;
-export const Styled_Photo_Box = styled(Link)`
+export const StyledPhotoBox = styled.div`
   grid-area: 2/1/3/13;
   align-self: start;
   transform-origin: bottom;
@@ -126,16 +125,16 @@ export const Styled_Photo_Box = styled(Link)`
     grid-area: 2/9/3/13;
   }
 `;
-export const Styled_Photo = styled(motion.img)`
+export const StyledPhoto = styled(motion.img)`
   width: 100%;
 `;
-export const Styled_Button = styled(Button)`
+export const StyledButton = styled(Button)`
   margin: 1em 0;
   @media screen and (orientation: landscape) {
     display: none !important;
   }
 `;
-export const Styled_Line = styled(Line)`
+export const StyledLine = styled(Line)`
   grid-area: 1/1/2/13;
   align-self: start;
 `;

@@ -1,14 +1,12 @@
 import React from "react";
-import ArrowDark from "../../../assets/icons/dark_arrow_icon.svg";
-import ArrowLight from "../../../assets/icons/light_arrow_icon.svg";
 import { useInView } from "react-intersection-observer";
-import { variants_title, variants_arrow } from "../../utils/motion";
+import { variants_arrow, variants_title } from "../../utils/motion/index";
 import {
-  Styled_Arrow_Box,
-  Styled_Arrow,
-  Styled_Button,
-  Styled_Text_Box,
-  Styled_Text,
+  StyledArrowBox,
+  StyledArrow,
+  StyledButton,
+  StyledTextBox,
+  StyledText,
 } from "./Button.css";
 
 const Button = ({
@@ -25,9 +23,9 @@ const Button = ({
   });
 
   return (
-    <Styled_Button ref={ref} to={to} className={className}>
-      <Styled_Text_Box>
-        <Styled_Text
+    <StyledButton ref={ref} to={to} className={className}>
+      <StyledTextBox>
+        <StyledText
           children={title}
           isSmall={isSmall}
           isDark={isDark}
@@ -37,18 +35,22 @@ const Button = ({
           exit="hidden"
           whileHover={{ scale: 0.9 }}
         />
-      </Styled_Text_Box>
-      <Styled_Arrow_Box invertArrow={invertArrow}>
-        <Styled_Arrow
-          src={isDark ? ArrowDark : ArrowLight}
+      </StyledTextBox>
+      <StyledArrowBox invertArrow={invertArrow}>
+        <StyledArrow
+          src={
+            isDark
+              ? `${process.env.PUBLIC_URL}/assets/icons/dark_arrow_icon.svg`
+              : `${process.env.PUBLIC_URL}/assets/icons/light_arrow_icon.svg`
+          }
           alt="arrow_icon"
           variants={variants_arrow}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           exit="hidden"
         />
-      </Styled_Arrow_Box>
-    </Styled_Button>
+      </StyledArrowBox>
+    </StyledButton>
   );
 };
 

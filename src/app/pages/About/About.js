@@ -1,24 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { InView } from "react-intersection-observer";
-import image from "../../../assets/images/my_photo.jpg";
 import Footer from "../../components/Footer";
 import { v4 as uuidv4 } from "uuid";
 import { useViewportScroll, useTransform } from "framer-motion";
 import Menu from "../../components/Menu";
-import { variants_text, variants_photo } from "../../utils/motion";
+import { variants_photo, variants_text } from "../../utils/motion/index";
 import {
-  Styled_Bck,
-  Styled_Section,
-  Styled_Article,
-  Styled_Title,
-  Styled_Photo,
-  Styled_Text_Box,
-  Styled_SubTitle,
-  Styled_SubTitleOutline,
-  Styled_ThirdTitle,
-  Styled_Text,
-  Styled_Photo_Box,
+  StyledBck,
+  StyledSection,
+  StyledArticle,
+  StyledTitle,
+  StyledPhoto,
+  StyledTextBox,
+  StyledSubTitle,
+  StyledSubTitleOutline,
+  StyledThirdTitle,
+  StyledText,
+  StyledPhotoBox,
 } from "./About.css";
+import Scrollbar from "smooth-scrollbar";
 
 const data = {
   paragraph_A: {
@@ -41,15 +41,24 @@ const data = {
 const About = () => {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-
+  const scroll = React.createRef();
+  useEffect(() => {
+    Scrollbar.init(scroll.current, { damping: 0.05 });
+  });
   return (
-    <Styled_Bck>
+    <StyledBck ref={scroll}>
       <Menu />
-      <Styled_Section>
-        <Styled_Article>
-          <Styled_Photo_Box>
-            <Styled_Photo
-              src={image}
+      <StyledSection>
+        <StyledArticle>
+          <StyledPhotoBox>
+            <StyledPhoto
+              srcSet={`${process.env.PUBLIC_URL}/assets/images/about/my_photo_736.jpg 736w,
+              ${process.env.PUBLIC_URL}/assets/images/about/my_photo_1024.jpg 1024w,
+              ${process.env.PUBLIC_URL}/assets/images/about/my_photo_2000.jpg 2000w`}
+              sizes="(max-width: 736px) 736px,
+              (max-width: 1024px) 1024px,
+              2000px"
+              src={`${process.env.PUBLIC_URL}/assets/images/about/my_photo_2000.jpg`}
               alt="my_photo"
               variants={variants_photo}
               animate="visible"
@@ -57,17 +66,17 @@ const About = () => {
               exit="hidden"
               style={{ scale }}
             />
-          </Styled_Photo_Box>
-          <Styled_Title title="o mnie" size="l" isDark={false} />
+          </StyledPhotoBox>
+          <StyledTitle title="o mnie" size="l" isDark={false} />
 
-          <Styled_Text_Box>
-            <Styled_SubTitle
+          <StyledTextBox>
+            <StyledSubTitle
               title="frontend developer"
               size="m"
               isDark={false}
             />
 
-            <Styled_SubTitleOutline
+            <StyledSubTitleOutline
               title="ui/ux designer"
               size="m"
               isDark={false}
@@ -75,7 +84,7 @@ const About = () => {
 
             <InView triggerOnce={true} threshold={0.2}>
               {({ inView, ref }) => (
-                <Styled_Text
+                <StyledText
                   ref={ref}
                   key={data.paragraph_A.id}
                   children={data.paragraph_A.text}
@@ -89,7 +98,7 @@ const About = () => {
 
             <InView triggerOnce={true} threshold={0.2}>
               {({ inView, ref }) => (
-                <Styled_Text
+                <StyledText
                   ref={ref}
                   key={data.paragraph_B.id}
                   children={data.paragraph_B.text}
@@ -101,11 +110,11 @@ const About = () => {
               )}
             </InView>
 
-            <Styled_ThirdTitle title="oferta" size="s" isDark={false} />
+            <StyledThirdTitle title="oferta" size="s" isDark={false} />
 
             <InView triggerOnce={true} threshold={0.2}>
               {({ inView, ref }) => (
-                <Styled_Text
+                <StyledText
                   ref={ref}
                   key={data.paragraph_C.id}
                   children={data.paragraph_C.text}
@@ -116,11 +125,11 @@ const About = () => {
                 />
               )}
             </InView>
-          </Styled_Text_Box>
-        </Styled_Article>
-      </Styled_Section>
+          </StyledTextBox>
+        </StyledArticle>
+      </StyledSection>
       <Footer isDark={false} />
-    </Styled_Bck>
+    </StyledBck>
   );
 };
 export default About;

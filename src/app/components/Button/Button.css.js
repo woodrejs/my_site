@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-export const Styled_Button = styled(motion.custom(Link))`
+export const StyledButton = styled(motion.custom(Link))`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   text-decoration: none;
 `;
-export const Styled_Text_Box = styled.div`
+export const StyledTextBox = styled.div`
   overflow: hidden;
 `;
-export const Styled_Text = styled(motion.div)`
+export const StyledText = styled(motion.div)`
   font-weight: 600;
   text-transform: uppercase;
   color: ${(props) =>
@@ -40,9 +40,9 @@ export const Styled_Text = styled(motion.div)`
     font-size: ${(props) => !props.isSmall && props.theme.size.xxxl};
   }
 `;
-export const Styled_Arrow_Box = styled(motion.dv)`
+export const StyledArrowBox = styled(motion.div)`
   transform: rotateZ(${(props) => (props.invertArrow ? 180 : 0)}deg);
 `;
-export const Styled_Arrow = styled(motion.img)`
+export const StyledArrow = styled(motion.img)`
   transform-origin: left;
 `;

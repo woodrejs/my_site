@@ -26,7 +26,7 @@ const theme = {
     xxxxxxl: "95.37px",
     xxxxxxxl: "119.21px",
     xxxxxxxxl: "149.01px",
-    xxxxxxxxxl: "232.83px",
+    xxxxxxxxxl: "228px",
     xxxxxxxxxxl: "282.83px",
   },
 };

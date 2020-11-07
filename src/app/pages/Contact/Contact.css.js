@@ -5,7 +5,7 @@ import Line from "../../components/Line";
 import Title from "../../components/Title";
 import { motion } from "framer-motion";
 
-export const Styled_Bck = styled.div`
+export const StyledBck = styled.div`
   width: 100%;
   background: ${(props) => props.theme.colors.bck};
   display: flex;
@@ -14,8 +14,9 @@ export const Styled_Bck = styled.div`
   justify-content: flex-start;
   padding: 0 3vw;
 `;
-export const Styled_Section = styled.section`
+export const StyledSection = styled.section`
   max-width: 1366px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 2fr 5fr 2fr auto;
@@ -28,7 +29,7 @@ export const Styled_Section = styled.section`
     height: calc(100vh - 130px);
   }
 `;
-export const Styled_Title = styled(Title)`
+export const StyledTitle = styled(Title)`
   grid-area: 1/1/2/13;
   align-self: end;
   word-wrap: break-word;
@@ -41,7 +42,7 @@ export const Styled_Title = styled(Title)`
     max-width: 40ch;
   }
 `;
-export const Styled_Text = styled(motion.p)`
+export const StyledText = styled(motion.p)`
   font-weight: 400;
   font-size: ${(props) => props.theme.size.xxs};
   color: ${(props) => props.theme.colors.dark};
@@ -65,11 +66,11 @@ export const Styled_Text = styled(motion.p)`
     margin-top: 2em;
   }
 `;
-export const Styled_Line = styled(Line)`
+export const StyledLine = styled(Line)`
   grid-area: 4/1/5/13;
   align-self: start;
 `;
-export const Styled_Social = styled(Social)`
+export const StyledSocial = styled(Social)`
   grid-area: 4/1/5/13;
   align-self: start;
   margin-top: 0.2em;
@@ -78,6 +79,6 @@ export const Styled_Social = styled(Social)`
     justify-content: flex-start;
   }
 `;
-export const Styled_Button = styled(Button)`
+export const StyledButton = styled(Button)`
   grid-area: 3/1/4/13;
 `;

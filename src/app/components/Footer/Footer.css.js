@@ -3,7 +3,7 @@ import Social from "../Social";
 import Button from "../Button";
 import Line from "../Line";
 
-export const Styled_Footer = styled.footer`
+export const StyledFooter = styled.footer`
   max-width: 1366px;
   width: 100%;
   display: grid;
@@ -18,18 +18,18 @@ export const Styled_Footer = styled.footer`
     height: 60vh;
   }
 `;
-export const Styled_Line = styled(Line)`
+export const StyledLine = styled(Line)`
   grid-area: 1/1/2/13;
   align-self: start;
 `;
-export const Styled_Button_Box = styled.div`
+export const StyledButtonBox = styled.div`
   grid-area: 1/1/2/13;
   margin-top: 1em;
 `;
-export const Styled_Button = styled(Button)`
+export const StyledButton = styled(Button)`
   margin-bottom: 0.5em;
 `;
-export const Styled_Social = styled(Social)`
+export const StyledSocial = styled(Social)`
   grid-area: 2/1/3/13;
   align-self: end;
 `;

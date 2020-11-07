@@ -1,49 +1,54 @@
 import React from "react";
-import image from "../../../assets/images/my_photo.jpg";
-import { variants_title, variants_photo } from "../../utils/motion";
+import { variants_photo, variants_title } from "../../utils/motion/index";
 import Menu from "../../components/Menu";
 import {
-  Styled_Bck,
-  Styled_Section,
-  Styled_Title,
-  Styled_SubTitle_Box,
-  Styled_SubTitle,
-  Styled_Photo_Box,
-  Styled_Photo,
-  Styled_Button,
+  StyledBck,
+  StyledSection,
+  StyledTitle,
+  StyledSubTitleBox,
+  StyledSubTitle,
+  StyledPhotoBox,
+  StyledPhoto,
+  StyledButton,
 } from "./Home.css";
 
 const Home = () => {
   return (
-    <Styled_Bck>
+    <StyledBck>
       <Menu />
-      <Styled_Section>
-        <Styled_Title size="l" title="frontend developer" />
+      <StyledSection>
+        <StyledTitle size="l" title="frontend developer" />
 
-        <Styled_SubTitle_Box>
-          <Styled_SubTitle
+        <StyledSubTitleBox>
+          <StyledSubTitle
             children="ui/ux designer"
             variants={variants_title}
             initial="hidden"
             animate="visible"
             exit="hidden"
           />
-        </Styled_SubTitle_Box>
+        </StyledSubTitleBox>
 
-        <Styled_Photo_Box to="/about">
-          <Styled_Photo
-            src={image}
+        <StyledPhotoBox to="/about">
+          <StyledPhoto
+            srcSet={`${process.env.PUBLIC_URL}/assets/images/home/my_photo_736.jpg 736w,
+            ${process.env.PUBLIC_URL}/assets/images/home/my_photo_1024.jpg 1024w,
+            ${process.env.PUBLIC_URL}/assets/images/home/my_photo.jpg 1520w`}
+            sizes="(max-width: 736px) 736px,
+            (max-width: 1024px) 1024px,
+            1520px"
+            src={`${process.env.PUBLIC_URL}/assets/images/home/my_photo.jpg`}
             alt="my_photo"
             variants={variants_photo}
             animate="visible"
             initial="hidden"
             exit="hidden"
           />
-        </Styled_Photo_Box>
+        </StyledPhotoBox>
 
-        <Styled_Button title="o mnie" to="/about" isDark={false} />
-      </Styled_Section>
-    </Styled_Bck>
+        <StyledButton title="o mnie" to="/about" isDark={false} />
+      </StyledSection>
+    </StyledBck>
   );
 };
 
