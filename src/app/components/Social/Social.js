@@ -1,16 +1,12 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import { v4 as uuidv4 } from "uuid";
+import { DATA } from "./Social.data";
 import { variants_title } from "../../utils/motion/index";
 import { StyledSocial, StyledSocialBox, StyledSocialItem } from "./Social.css";
+import { useCounter } from "../../utils/sweet_state";
 
-const DATA = [
-  { name: "facebook", id: uuidv4(), href: "#" },
-  { name: "behance", id: uuidv4(), href: "#" },
-  { name: "instagram", id: uuidv4(), href: "#" },
-];
-
-const Social = ({ className, isDark = true }) => {
+const Social = ({ className }) => {
+  const [state, actions] = useCounter();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0,
@@ -23,7 +19,7 @@ const Social = ({ className, isDark = true }) => {
           <StyledSocialItem
             children={name}
             key={id}
-            isDark={isDark}
+            isdark={state.isdark}
             href={href}
             variants={variants_title}
             initial="hidden"

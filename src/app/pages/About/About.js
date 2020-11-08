@@ -27,7 +27,7 @@ const About = () => {
   const scale = useTransform(scrollY, [0, 1500], [1, 1.3]);
 
   useEffect(() => {
-    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.05 });
+    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.07 });
     scrollBar.track.xAxis.element.remove();
     scrollBar.addListener((status) => {
       scrollY.set(status.offset.y);
@@ -35,6 +35,7 @@ const About = () => {
     });
   });
 
+  console.log("render");
   return (
     <StyledBck ref={scrollRef}>
       <Nav />
@@ -58,20 +59,12 @@ const About = () => {
             />
           </StyledPhotoBox>
 
-          <StyledTitle title="o mnie" size="l" isDark={false} />
+          <StyledTitle title="o mnie" size="l" />
 
           <StyledTextBox>
-            <StyledSubTitle
-              title="frontend developer"
-              size="m"
-              isDark={false}
-            />
+            <StyledSubTitle title="frontend developer" size="m" />
 
-            <StyledSubTitleOutline
-              title="ui/ux designer"
-              size="m"
-              isDark={false}
-            />
+            <StyledSubTitleOutline title="ui/ux designer" size="m" />
 
             <InView triggerOnce={true} threshold={0.2}>
               {({ inView, ref }) => (
@@ -101,7 +94,7 @@ const About = () => {
               )}
             </InView>
 
-            <StyledThirdTitle title="oferta" size="s" isDark={false} />
+            <StyledThirdTitle title="oferta" size="s" />
 
             <InView triggerOnce={true} threshold={0.2}>
               {({ inView, ref }) => (
@@ -119,7 +112,7 @@ const About = () => {
           </StyledTextBox>
         </StyledArticle>
       </StyledSection>
-      <Footer isDark={false} />
+      <Footer />
     </StyledBck>
   );
 };

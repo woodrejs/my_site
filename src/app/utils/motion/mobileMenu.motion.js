@@ -1,6 +1,6 @@
 export const variants_menuMobile = {
   visible: {
-    x: "70vw",
+    x: "75vw",
     transition: { ease: "easeInOut", duration: 0.4, when: "beforeChildren" },
   },
   hidden: {

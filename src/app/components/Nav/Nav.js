@@ -2,7 +2,7 @@ import React from "react";
 import MenuDeskop from "../MenuDeskop";
 import MenuMobile from "../MenuMobile";
 import { useLocation } from "react-router-dom";
-
+import { useCounter } from "../../utils/sweet_state";
 import { variants_list } from "../../utils/motion/list.motion";
 import {
   StyledNav,
@@ -13,14 +13,14 @@ import {
 } from "./Nav.css";
 
 const Nav = () => {
+  const [state, actions] = useCounter();
   const pathname = useLocation().pathname;
-  const isdark =
-    (pathname !== "/") &
-    (pathname !== "/portfolio") &
-    (pathname !== "/contact");
+  const copywriterIcon = state.isdark
+    ? `${process.env.PUBLIC_URL}/assets/icons/light_copywriter_icon.svg`
+    : `${process.env.PUBLIC_URL}/assets/icons/dark_copywriter_icon.svg`;
 
   return (
-    <StyledNav isdark={isdark}>
+    <StyledNav isdark={state.isdark}>
       <StyledBrand
         to="/"
         variants={variants_list}
@@ -28,19 +28,12 @@ const Nav = () => {
         animate="visible"
         exit="hidden"
       >
-        <StyledBrandIcon
-          src={
-            isdark
-              ? `${process.env.PUBLIC_URL}/assets/icons/light_copywriter_icon.svg`
-              : `${process.env.PUBLIC_URL}/assets/icons/dark_copywriter_icon.svg`
-          }
-          alt="copywriter_icon"
-        />
-        <StyledBrandName children="Maciej Szczepański" isdark={isdark} />
+        <StyledBrandIcon src={copywriterIcon} alt="copywriter_icon" />
+        <StyledBrandName children="Maciej Szczepański" isdark={state.isdark} />
       </StyledBrand>
-      <MenuDeskop isdark={isdark} pathname={pathname} />
+      <MenuDeskop pathname={pathname} />
       <MenuMobile />
-      <StyledLine isDark={!isdark} />
+      <StyledLine />
     </StyledNav>
   );
 };

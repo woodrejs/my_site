@@ -22,7 +22,7 @@ const Project = () => {
   const DATA = PortfolioData.filter((item) => item.id === id)[0];
 
   useEffect(() => {
-    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.05 });
+    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.07 });
     scrollBar.track.xAxis.element.remove();
     scrollBar.addListener((status) => {
       scrollBar.setPosition(0, status.offset.y);
@@ -34,13 +34,8 @@ const Project = () => {
       <Nav />
       <StyledSection>
         <StyledArticle>
-          <StyledTitle title={DATA.name} size="l" isDark={false} />
-          <StyledButton
-            title="powrót"
-            to="/portfolio"
-            isDark={false}
-            invertArrow={true}
-          />
+          <StyledTitle title={DATA.name} size="l" />
+          <StyledButton title="powrót" to="/portfolio" invertArrow={true} />
           <LightgalleryProvider galleryClassName="my_custom_classname">
             <StyledMobileLayoutPhotoBox>
               <PhotoItem image={DATA.mobileImage} alt="Mobile_Layout_Photo" />
@@ -52,7 +47,7 @@ const Project = () => {
           </LightgalleryProvider>
         </StyledArticle>
       </StyledSection>
-      <StyledFooter isDark={false} />
+      <StyledFooter />
     </StyledBck>
   );
 };

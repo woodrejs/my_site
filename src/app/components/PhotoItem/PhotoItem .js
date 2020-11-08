@@ -10,7 +10,6 @@ const StyledPhoto = styled(motion.img)`
 `;
 
 const PhotoItem = ({ image, alt, className }) => {
-  console.log(image.xl);
   return (
     <LightgalleryItem group="any" src={image.xl} className={className}>
       <StyledPhoto

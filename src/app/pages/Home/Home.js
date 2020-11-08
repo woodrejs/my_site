@@ -46,7 +46,7 @@ const Home = () => {
           />
         </StyledPhotoBox>
 
-        <StyledButton title="o mnie" to="/about" isDark={false} />
+        <StyledButton title="o mnie" to="/about" />
       </StyledSection>
     </StyledBck>
   );

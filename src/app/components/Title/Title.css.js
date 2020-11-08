@@ -9,7 +9,7 @@ export const StyledH1 = styled(motion.h1)`
   font-weight: 600;
   font-size: ${(props) => props.theme.size.xxxl};
   color: ${(props) =>
-    props.isDark ? props.theme.colors.dark : props.theme.colors.light};
+    props.isdark ? props.theme.colors.light : props.theme.colors.dark};
   line-height: 82.68%;
   letter-spacing: -0.05em;
   text-transform: uppercase;
@@ -44,7 +44,7 @@ export const StyledH2 = styled(motion.h2)`
   font-weight: 600;
   font-size: ${(props) => props.theme.size.xl};
   color: ${(props) =>
-    props.isDark ? props.theme.colors.dark : props.theme.colors.light};
+    props.isdark ? props.theme.colors.light : props.theme.colors.daark};
   line-height: 98.18%;
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -66,7 +66,7 @@ export const StyledH3 = styled(motion.h3)`
   font-weight: 600;
   font-size: ${(props) => props.theme.size.l};
   color: ${(props) =>
-    props.isDark ? props.theme.colors.dark : props.theme.colors.light};
+    props.isdark ? props.theme.colors.light : props.theme.colors.dark};
   line-height: 98.18%;
 
   text-transform: uppercase;

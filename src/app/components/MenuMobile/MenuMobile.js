@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DATA } from "../Nav/Nav.data";
-import { useLocation } from "react-router-dom";
+import { useCounter } from "../../utils/sweet_state";
 import {
   variants_list,
   variants_item,
@@ -19,17 +19,13 @@ import {
 
 const MenuMobile = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [state, actions] = useCounter();
   const handleHamburger = () => setIsOpen(!isOpen);
-  const handleAnimation = isOpen ? "visible" : "hidden";
-  const pathname = useLocation().pathname;
-  const isdark =
-    (pathname !== "/") &
-    (pathname !== "/portfolio") &
-    (pathname !== "/contact");
-  const closeIcon = isdark
+
+  const closeIcon = state.isdark
     ? `${process.env.PUBLIC_URL}/assets/icons/Close_Dark.svg`
     : `${process.env.PUBLIC_URL}/assets/icons/Close_Light.svg`;
-  const hamburgerIcon = isdark
+  const hamburgerIcon = state.isdark
     ? `${process.env.PUBLIC_URL}/assets/icons/light_cross_icon.svg`
     : `${process.env.PUBLIC_URL}/assets/icons/dark_cross_icon.svg`;
 
@@ -44,7 +40,7 @@ const MenuMobile = () => {
       >
         <StyledHamburgerName
           children="Menu"
-          isdark={isdark}
+          isdark={state.isdark}
           variants={variants_item}
           whileHover="hover"
         />
@@ -56,10 +52,10 @@ const MenuMobile = () => {
         />
       </StyledHamburger>
       <StyledMobileMenu
-        isdark={isdark}
+        isdark={state.isdark}
         variants={variants_menuMobile}
         initial="hidden"
-        animate={handleAnimation}
+        animate={isOpen ? "visible" : "hidden"}
         exit="hidden"
       >
         <StyledMobileMenuCloseBtn
@@ -71,7 +67,7 @@ const MenuMobile = () => {
 
         <StyledMobileMenuBox
           variants={variants_list}
-          animate={handleAnimation}
+          animate="visible"
           initial="hidden"
           exit="hidden"
         >
@@ -85,7 +81,7 @@ const MenuMobile = () => {
               <StyledMobileMenuLink
                 to={item.path}
                 children={item.name}
-                isdark={isdark}
+                isdark={state.isdark}
               />
             </StyledMobileMenuItem>
           ))}

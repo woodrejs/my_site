@@ -23,5 +23,5 @@ export const StyledSocialItem = styled(motion.a)`
 
   font-size: ${(props) => props.theme.size.xs};
   color: ${(props) =>
-    props.isDark ? props.theme.colors.dark : props.theme.colors.light};
+    props.isdark ? props.theme.colors.light : props.theme.colors.dark};
 `;

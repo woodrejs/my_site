@@ -1,5 +1,6 @@
 import React from "react";
 import { DATA } from "../Nav/Nav.data";
+import { useCounter } from "../../utils/sweet_state";
 import {
   variants_list,
   variants_item,
@@ -12,7 +13,9 @@ import {
   StyledMenuItemUnderLine,
 } from "./MenuDeskop.css";
 
-const MenuDeskop = ({ isdark, pathname }) => {
+const MenuDeskop = ({ pathname }) => {
+  const [state, actions] = useCounter();
+
   return (
     <StyledMenu
       variants={variants_list}
@@ -21,22 +24,17 @@ const MenuDeskop = ({ isdark, pathname }) => {
       exit="hidden"
     >
       {DATA.map((item, index) => (
-        <StyledMenuItem
-          key={item.id}
-          isdark={isdark}
-          variants={variants_item}
-          custom={index}
-        >
+        <StyledMenuItem key={item.id} variants={variants_item} custom={index}>
           <StyledMenuItemLink
             to={item.path}
             children={item.name}
-            isdark={isdark}
+            isdark={state.isdark}
           />
           <StyledMenuItemUnderLine
             variants={variants_underline}
             animate={item.path === pathname ? "visible" : "hidden"}
             exit="hidden"
-            isdark={isdark}
+            isdark={state.isdark}
             custom={index}
           />
         </StyledMenuItem>

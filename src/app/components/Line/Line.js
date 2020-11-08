@@ -2,15 +2,18 @@ import React from "react";
 import { InView } from "react-intersection-observer";
 import { StyledLine } from "./Line.css";
 import { variants_line } from "../../utils/motion/index";
+import { useCounter } from "../../utils/sweet_state";
 
-const Line = ({ isDark, className }) => {
+const Line = ({ className }) => {
+  const [state, actions] = useCounter();
+
   return (
     <InView triggerOnce={true}>
       {({ inView, ref }) => (
         <StyledLine
           ref={ref}
           className={className}
-          isDark={isDark}
+          isdark={state.isdark}
           variants={variants_line}
           animate={inView ? "visible" : "hidden"}
           initial="hidden"

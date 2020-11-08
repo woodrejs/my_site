@@ -18,7 +18,7 @@ const Portfolio = () => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.05 });
+    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.07 });
     scrollBar.track.xAxis.element.remove();
     scrollBar.addListener((status) => {
       scrollBar.setPosition(0, status.offset.y);

@@ -16,6 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "react-smooth-scrollbar": "^8.0.6",
+    "react-sweet-state": "^2.4.4",
     "react-use": "^15.3.4",
     "smooth-scrollbar": "^8.5.3",
     "styled-components": "^5.2.0",

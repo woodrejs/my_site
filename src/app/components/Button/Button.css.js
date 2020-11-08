@@ -15,7 +15,7 @@ export const StyledText = styled(motion.div)`
   font-weight: 600;
   text-transform: uppercase;
   color: ${(props) =>
-    props.isDark ? props.theme.colors.dark : props.theme.colors.light};
+    props.isdark ? props.theme.colors.light : props.theme.colors.dark};
 
   font-size: ${(props) =>
     props.isSmall ? props.theme.size.xs : props.theme.size.l};

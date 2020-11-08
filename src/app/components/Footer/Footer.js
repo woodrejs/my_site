@@ -7,28 +7,17 @@ import {
   StyledSocial,
 } from "./Footer.css";
 
-const Footer = ({ isDark, className }) => {
+const Footer = ({ className }) => {
   return (
     <StyledFooter className={className}>
-      <StyledLine isDark={isDark} />
+      <StyledLine />
 
       <StyledButtonBox>
-        <StyledButton
-          title="portfolio"
-          to="/portfolio"
-          isDark={isDark}
-          isSmall={false}
-        />
-
-        <StyledButton
-          title="kontakt"
-          to="/contact"
-          isDark={isDark}
-          isSmall={false}
-        />
+        <StyledButton title="portfolio" to="/portfolio" isSmall={false} />
+        <StyledButton title="kontakt" to="/contact" isSmall={false} />
       </StyledButtonBox>
 
-      <StyledSocial isDark={isDark} />
+      <StyledSocial />
     </StyledFooter>
   );
 };

@@ -10,5 +10,5 @@ export const variants_title = {
     y: "100%",
     transition: { ease: "easeOut", duration: 0.6 },
   },
-  hover: { scale: 0.9 },
+  hover: { scale: 0.95 },
 };

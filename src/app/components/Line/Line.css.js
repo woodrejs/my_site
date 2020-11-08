@@ -6,7 +6,7 @@ export const StyledLine = styled(motion.div)`
   transform-origin: left;
   border-bottom: 1px solid
     ${(props) =>
-      props.isDark
-        ? (props) => props.theme.colors.dark
-        : (props) => props.theme.colors.light};
+      props.isdark
+        ? (props) => props.theme.colors.light
+        : (props) => props.theme.colors.dark};
 `;

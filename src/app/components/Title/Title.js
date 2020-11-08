@@ -8,12 +8,14 @@ import {
   StyledH2,
   StyledH3,
 } from "./Title.css";
+import { useCounter } from "../../utils/sweet_state";
 
-const Title = ({ size, className, title, isDark = true }) => {
+const Title = ({ size, className, title }) => {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
   });
+  const [state, actions] = useCounter();
 
   return (
     <StyledTitle className={className} ref={ref}>
@@ -21,7 +23,7 @@ const Title = ({ size, className, title, isDark = true }) => {
         {size === "l" && (
           <StyledH1
             children={title}
-            isDark={isDark}
+            isdark={state.isdark}
             variants={variants_title}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -31,7 +33,7 @@ const Title = ({ size, className, title, isDark = true }) => {
         {size === "m" && (
           <StyledH2
             children={title}
-            isDark={isDark}
+            isdark={state.isdark}
             variants={variants_title}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -41,7 +43,7 @@ const Title = ({ size, className, title, isDark = true }) => {
         {size === "s" && (
           <StyledH3
             children={title}
-            isDark={isDark}
+            isdark={state.isdark}
             variants={variants_title}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}

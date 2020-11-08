@@ -25,7 +25,7 @@ import {
 const ProjectSection = ({ number, name, date, type, thumbnail, id }) => {
   return (
     <StyledArticle>
-      <StyledLine isDark={false} />
+      <StyledLine />
 
       <InView triggerOnce={true} threshold={0.2}>
         {({ inView, ref }) => (
