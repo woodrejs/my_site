@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { InView } from "react-intersection-observer";
+import Scrollbar from "smooth-scrollbar";
+import { useMotionValue } from "framer-motion";
 import Footer from "../../components/Footer";
-import { v4 as uuidv4 } from "uuid";
 import { useTransform } from "framer-motion";
-import Menu from "../../components/Menu";
+import Nav from "../../components/Nav";
 import { variants_photo, variants_text } from "../../utils/motion/index";
+import { DATA } from "./About.data";
 import {
   StyledBck,
   StyledSection,
@@ -18,42 +20,24 @@ import {
   StyledText,
   StyledPhotoBox,
 } from "./About.css";
-import Scrollbar from "smooth-scrollbar";
-import { useMotionValue } from "framer-motion";
-
-const data = {
-  paragraph_A: {
-    text:
-      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using",
-    id: uuidv4(),
-  },
-  paragraph_B: {
-    text:
-      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using",
-    id: uuidv4(),
-  },
-  paragraph_C: {
-    text:
-      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using",
-    id: uuidv4(),
-  },
-};
 
 const About = () => {
+  const scrollRef = useRef(null);
   const scrollY = useMotionValue(0);
   const scale = useTransform(scrollY, [0, 1500], [1, 1.3]);
-  const scrollRef = useRef(null);
 
   useEffect(() => {
     const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.05 });
+    scrollBar.track.xAxis.element.remove();
     scrollBar.addListener((status) => {
       scrollY.set(status.offset.y);
+      scrollBar.setPosition(0, status.offset.y);
     });
   });
 
   return (
     <StyledBck ref={scrollRef}>
-      <Menu />
+      <Nav />
       <StyledSection>
         <StyledArticle>
           <StyledPhotoBox>
@@ -73,6 +57,7 @@ const About = () => {
               style={{ scale }}
             />
           </StyledPhotoBox>
+
           <StyledTitle title="o mnie" size="l" isDark={false} />
 
           <StyledTextBox>
@@ -92,8 +77,8 @@ const About = () => {
               {({ inView, ref }) => (
                 <StyledText
                   ref={ref}
-                  key={data.paragraph_A.id}
-                  children={data.paragraph_A.text}
+                  key={DATA.paragraph_A.id}
+                  children={DATA.paragraph_A.text}
                   variants={variants_text}
                   animate={inView ? "visible" : "hidden"}
                   initial="hidden"
@@ -106,8 +91,8 @@ const About = () => {
               {({ inView, ref }) => (
                 <StyledText
                   ref={ref}
-                  key={data.paragraph_B.id}
-                  children={data.paragraph_B.text}
+                  key={DATA.paragraph_B.id}
+                  children={DATA.paragraph_B.text}
                   variants={variants_text}
                   animate={inView ? "visible" : "hidden"}
                   initial="hidden"
@@ -122,8 +107,8 @@ const About = () => {
               {({ inView, ref }) => (
                 <StyledText
                   ref={ref}
-                  key={data.paragraph_C.id}
-                  children={data.paragraph_C.text}
+                  key={DATA.paragraph_C.id}
+                  children={DATA.paragraph_C.text}
                   variants={variants_text}
                   animate={inView ? "visible" : "hidden"}
                   initial="hidden"

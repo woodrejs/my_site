@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "../../components/Menu";
+import Nav from "../../components/Nav";
 import { InView } from "react-intersection-observer";
 import { variants_text } from "../../utils/motion/index";
 import {
@@ -21,7 +21,7 @@ const DATA = {
 const Contact = () => {
   return (
     <StyledBck>
-      <Menu />
+      <Nav />
       <StyledSection>
         <StyledTitle isDark={true} size="m" title="m.szczepanski@gmail.com" />
 

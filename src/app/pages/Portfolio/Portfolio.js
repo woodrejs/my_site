@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import Scrollbar from "smooth-scrollbar";
 import ProjectSection from "../../components/ProjectSection";
-import Menu from "../../components/Menu";
+import Nav from "../../components/Nav";
 import { variants_title } from "../../utils/motion/index";
 import { PortfolioData } from "./Portfolio.data";
 import {
@@ -12,17 +13,21 @@ import {
   StyledProjectsBox,
   StyledFooter,
 } from "./Portfolio.css";
-import Scrollbar from "smooth-scrollbar";
 
 const Portfolio = () => {
-  const scroll = React.createRef();
+  const scrollRef = useRef(null);
+
   useEffect(() => {
-    Scrollbar.init(scroll.current, { damping: 0.05 });
+    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.05 });
+    scrollBar.track.xAxis.element.remove();
+    scrollBar.addListener((status) => {
+      scrollBar.setPosition(0, status.offset.y);
+    });
   });
 
   return (
-    <StyledBck ref={scroll}>
-      <Menu />
+    <StyledBck ref={scrollRef}>
+      <Nav />
       <StyledSection>
         <StyledTitle title="projekty" size="l" />
 

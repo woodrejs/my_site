@@ -3,13 +3,18 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const StyledBck = styled.div`
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   background: ${(props) => props.theme.colors.dark};
   padding: 0 3vw;
+  overflow: hidden;
   :first-child {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;

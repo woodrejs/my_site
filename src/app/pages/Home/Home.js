@@ -1,6 +1,6 @@
 import React from "react";
 import { variants_photo, variants_title } from "../../utils/motion/index";
-import Menu from "../../components/Menu";
+import Nav from "../../components/Nav";
 import {
   StyledBck,
   StyledSection,
@@ -15,7 +15,7 @@ import {
 const Home = () => {
   return (
     <StyledBck>
-      <Menu />
+      <Nav />
       <StyledSection>
         <StyledTitle size="l" title="frontend developer" />
 

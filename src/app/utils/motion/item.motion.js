@@ -11,4 +11,5 @@ export const variants_item = {
       delay: 0.3 - i * 0.1,
     },
   }),
+  hover: { scale: 1.15 },
 };
