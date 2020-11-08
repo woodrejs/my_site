@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { InView } from "react-intersection-observer";
 import Footer from "../../components/Footer";
 import { v4 as uuidv4 } from "uuid";
-import { useViewportScroll, useTransform } from "framer-motion";
+import { useTransform } from "framer-motion";
 import Menu from "../../components/Menu";
 import { variants_photo, variants_text } from "../../utils/motion/index";
 import {
@@ -19,6 +19,7 @@ import {
   StyledPhotoBox,
 } from "./About.css";
 import Scrollbar from "smooth-scrollbar";
+import { useMotionValue } from "framer-motion";
 
 const data = {
   paragraph_A: {
@@ -39,14 +40,19 @@ const data = {
 };
 
 const About = () => {
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-  const scroll = React.createRef();
+  const scrollY = useMotionValue(0);
+  const scale = useTransform(scrollY, [0, 1500], [1, 1.3]);
+  const scrollRef = useRef(null);
+
   useEffect(() => {
-    Scrollbar.init(scroll.current, { damping: 0.05 });
+    const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.05 });
+    scrollBar.addListener((status) => {
+      scrollY.set(status.offset.y);
+    });
   });
+
   return (
-    <StyledBck ref={scroll}>
+    <StyledBck ref={scrollRef}>
       <Menu />
       <StyledSection>
         <StyledArticle>
