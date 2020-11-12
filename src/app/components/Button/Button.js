@@ -16,13 +16,14 @@ const Button = ({
   to,
   invertArrow = false,
   className,
+  white = false,
 }) => {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
   });
   const [state, actions] = useCounter();
-  const arrowIcon = state.isdark
+  const arrowIcon = (white ? white : state.isdark)
     ? `${process.env.PUBLIC_URL}/assets/icons/light_arrow_icon.svg`
     : `${process.env.PUBLIC_URL}/assets/icons/dark_arrow_icon.svg`;
 
@@ -32,7 +33,7 @@ const Button = ({
         <StyledText
           children={title}
           isSmall={isSmall}
-          isdark={state.isdark}
+          isdark={white ? white : state.isdark}
           variants={variants_title}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}

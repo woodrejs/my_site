@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { LightgalleryItem } from "react-lightgallery";
 import { variants_photo } from "../../utils/motion/photo.motion";
 import { motion } from "framer-motion";
@@ -10,6 +10,8 @@ const StyledPhoto = styled(motion.img)`
 `;
 
 const PhotoItem = ({ image, alt, className }) => {
+  const [imgIsLoaded, setImgIsLoaded] = useState(false);
+
   return (
     <LightgalleryItem group="any" src={image.xl} className={className}>
       <StyledPhoto
@@ -22,9 +24,10 @@ const PhotoItem = ({ image, alt, className }) => {
         src={image.xl}
         alt={alt}
         variants={variants_photo}
-        animate="visible"
+        animate={imgIsLoaded ? "visible" : "hidden"}
         initial="hidden"
         exit="hidden"
+        onLoad={() => setImgIsLoaded(true)}
       />
     </LightgalleryItem>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { variants_photo, variants_title } from "../../utils/motion/index";
 import Nav from "../../components/Nav";
 import {
@@ -13,6 +13,8 @@ import {
 } from "./Home.css";
 
 const Home = () => {
+  const [imgIsLoaded, setImgIsLoaded] = useState(false);
+
   return (
     <StyledBck>
       <Nav />
@@ -40,13 +42,14 @@ const Home = () => {
             src={`${process.env.PUBLIC_URL}/assets/images/home/my_photo.jpg`}
             alt="my_photo"
             variants={variants_photo}
-            animate="visible"
+            animate={imgIsLoaded ? "visible" : "hidden"}
             initial="hidden"
             exit="hidden"
+            onLoad={() => setImgIsLoaded(true)}
           />
         </StyledPhotoBox>
 
-        <StyledButton title="o mnie" to="/about" />
+        <StyledButton title="o mnie" to="/about" white={true} />
       </StyledSection>
     </StyledBck>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 import Scrollbar from "smooth-scrollbar";
 import { useMotionValue } from "framer-motion";
@@ -25,6 +25,7 @@ const About = () => {
   const scrollRef = useRef(null);
   const scrollY = useMotionValue(0);
   const scale = useTransform(scrollY, [0, 1500], [1, 1.3]);
+  const [imgIsLoaded, setImgIsLoaded] = useState(false);
 
   useEffect(() => {
     const scrollBar = Scrollbar.init(scrollRef.current, { damping: 0.07 });
@@ -52,10 +53,11 @@ const About = () => {
               src={`${process.env.PUBLIC_URL}/assets/images/about/my_photo_2000.jpg`}
               alt="my_photo"
               variants={variants_photo}
-              animate="visible"
+              animate={imgIsLoaded ? "visible" : "hidden"}
               initial="hidden"
               exit="hidden"
               style={{ scale }}
+              onLoad={() => setImgIsLoaded(true)}
             />
           </StyledPhotoBox>
 
